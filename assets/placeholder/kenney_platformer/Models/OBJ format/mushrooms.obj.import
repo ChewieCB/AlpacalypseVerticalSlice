@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cyveexnjpbnrp"
+path="res://.godot/imported/mushrooms.obj-3c92828c0d3f7e87eb71858e5ac65676.mesh"
+
+[deps]
+
+files=["res://.godot/imported/mushrooms.obj-3c92828c0d3f7e87eb71858e5ac65676.mesh"]
+
+source_file="res://assets/placeholder/kenney_platformer/Models/OBJ format/mushrooms.obj"
+dest_files=["res://.godot/imported/mushrooms.obj-3c92828c0d3f7e87eb71858e5ac65676.mesh", "res://.godot/imported/mushrooms.obj-3c92828c0d3f7e87eb71858e5ac65676.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

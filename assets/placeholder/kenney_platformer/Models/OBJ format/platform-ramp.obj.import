@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c37tdieqvu3xj"
+path="res://.godot/imported/platform-ramp.obj-afb1cbdca5933bac52e2b2eb5297cdfb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/platform-ramp.obj-afb1cbdca5933bac52e2b2eb5297cdfb.mesh"]
+
+source_file="res://assets/placeholder/kenney_platformer/Models/OBJ format/platform-ramp.obj"
+dest_files=["res://.godot/imported/platform-ramp.obj-afb1cbdca5933bac52e2b2eb5297cdfb.mesh", "res://.godot/imported/platform-ramp.obj-afb1cbdca5933bac52e2b2eb5297cdfb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

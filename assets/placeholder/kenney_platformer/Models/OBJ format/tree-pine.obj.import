@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bfo2fnsx68may"
+path="res://.godot/imported/tree-pine.obj-f2b19638dbb2b5c6e9154509f38de681.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tree-pine.obj-f2b19638dbb2b5c6e9154509f38de681.mesh"]
+
+source_file="res://assets/placeholder/kenney_platformer/Models/OBJ format/tree-pine.obj"
+dest_files=["res://.godot/imported/tree-pine.obj-f2b19638dbb2b5c6e9154509f38de681.mesh", "res://.godot/imported/tree-pine.obj-f2b19638dbb2b5c6e9154509f38de681.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
