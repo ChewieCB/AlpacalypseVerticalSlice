@@ -71,10 +71,9 @@ func _physics_process(delta):
 	
 	velocity = applied_velocity
 	move_and_slide()
-	
-	# Rotation
-		
-	#rotation.y = lerp_angle(rotation.y, camera_pivot_h.rotation.y, delta)
+	var n = ($Llama/FrontRay.get_collision_normal() + $Llama/BackRay.get_collision_normal()) / 2.0
+	var xform = align_with_y(model.global_transform, n)
+	model.global_transform = model.global_transform.interpolate_with(xform, 12 * delta)
 	
 	# Falling/respawning
 	
@@ -158,6 +157,13 @@ func handle_gravity(delta):
 		
 		jump_single = true
 		gravity = 0
+
+
+func align_with_y(xform: Transform3D, new_y: Vector3) -> Transform3D:
+	xform.basis.y = new_y
+	xform.basis.x = -xform.basis.z.cross(new_y)
+	xform.basis = xform.basis.orthonormalized()
+	return xform
 
 # Jumping
 

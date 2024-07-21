@@ -644,7 +644,7 @@ size = Vector3(3, 8, 3)
 material = ExtResource("2_jv6qt")
 
 [node name="PlayerController" parent="." instance=ExtResource("6_j3b10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, -21.5272)
 movement_speed = 500
 jump_strength = 11
 
