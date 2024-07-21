@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=4 uid="uid://4tg3k26hd4dv"]
+
+[ext_resource type="Script" path="res://src/collectibles/jewel/jewel.gd" id="1_328bc"]
+[ext_resource type="Texture2D" uid="uid://c4i37dh4a5ld1" path="res://assets/placeholder/kenney_platformer/Models/GLB format/Textures/colormap.png" id="2_lu0te"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7oos"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("2_lu0te")
+metallic = 0.35
+metallic_specular = 1.0
+roughness = 0.1
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ojeks"]
+_surfaces = [{
+"aabb": AABB(-0.16644, 0, -0.144141, 0.33288, 0.370482, 0.288283),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AgAAAAEAAwACAAEAAgAEAAAABAAFAAYAAQAAAAYABgAFAAEABAAHAAUAAwABAAcABAACAAMAAwAHAAQABwABAAUAAAAEAAYA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("////f/9/AAD/fwAA/38AAP+//3///wAA/z//f///AAD/f////38AAP8//38AAAAA/7//fwAAAAAAAP9//38AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4yb7q"]
+resource_name = "jewel_jewel"
+_surfaces = [{
+"aabb": AABB(-0.16644, 0, -0.144141, 0.33288, 0.370482, 0.288283),
+"attribute_data": PackedByteArray("/7f/n/+3mLn/t/+f/7f/n/+3mLn/t/+f/7dlhv+3/5//t/+f/7f/n/+3/5//t2WG/7f/n/+3/5//t5i5/7f/n/+3mLn/t/+f/7f/n/+3/5//t2WG/7eYuf+3/5//t/+f/7f/n/+3/5//t2WG/7f/n/+3ZYb/t/+f/7eYuf+3/5//t/+f/7dlhv+3/5//t/+f"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AgAAAAEABQADAAQACAAGAAcACwAJAAoADgAMAA0AEQAPABAAFAASABMAFwAVABYAGgAYABkAHQAbABwAIAAeAB8AIwAhACIA"),
+"material": SubResource("StandardMaterial3D_x7oos"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("////f/9/x7H/fwAA/3/Hsf+//3///8ex/7//f///8Jr/fwAA/3/wmv8//3////Ca/3////9/x7H///9//3/Hsf+//3///8ex/z//fwAA////v/9/AAD///9/////f///////f/9/29f/v/9/AADb1/9/AAD/f9vX/z//fwAA////fwAA/3////+//38AAP//AAD/f/9/29f/P/9/AADb1/9/////f9vX/38AAP9/x7EAAP9//3/Hsf8//3///8ex/7//f///8Jr/P/9////wmv9/////f/CaAAD/f/9/x7H/f////3/Hsf8//3///8ex/38AAP9/29f/P/9/AADb1wAA/3//f9vX/3////9/29f/v/9/AADb1////3//f9vXuljxPbpY8T26WPE9AAD/fwAA/38AAP9/8L1FJ/C9RSfwvUUn/39K3/9/St//f0rfim/1LIpv9SyKb/UstKD//7Sg//+0oP//dJAJ03SQCdN0kAnTDkK52A5CudgOQrnY////f////3////9/RKcNwkSnDcJEpw3CClOK7wpTiu8KU4rv9Kx0EPSsdBD0rHQQ")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ojeks")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w6mmg"]
+radius = 1.0
+
+[node name="Jewel" type="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -41)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_328bc")
+
+[node name="Jewel" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("ArrayMesh_4yb7q")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_w6mmg")

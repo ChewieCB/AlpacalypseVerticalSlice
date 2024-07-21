@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://coc7ny4rov1nu"
+path="res://.godot/imported/door-open.obj-f604c0b4a8598a204cbed8b8e20a4a48.mesh"
+
+[deps]
+
+files=["res://.godot/imported/door-open.obj-f604c0b4a8598a204cbed8b8e20a4a48.mesh"]
+
+source_file="res://assets/placeholder/kenney_platformer/Models/OBJ format/door-open.obj"
+dest_files=["res://.godot/imported/door-open.obj-f604c0b4a8598a204cbed8b8e20a4a48.mesh", "res://.godot/imported/door-open.obj-f604c0b4a8598a204cbed8b8e20a4a48.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

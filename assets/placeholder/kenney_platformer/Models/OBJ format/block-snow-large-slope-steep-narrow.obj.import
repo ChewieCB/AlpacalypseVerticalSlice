@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://1tpa1wx47o8h"
+path="res://.godot/imported/block-snow-large-slope-steep-narrow.obj-f2718fa611202448df96f0b3149c0c2f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/block-snow-large-slope-steep-narrow.obj-f2718fa611202448df96f0b3149c0c2f.mesh"]
+
+source_file="res://assets/placeholder/kenney_platformer/Models/OBJ format/block-snow-large-slope-steep-narrow.obj"
+dest_files=["res://.godot/imported/block-snow-large-slope-steep-narrow.obj-f2718fa611202448df96f0b3149c0c2f.mesh", "res://.godot/imported/block-snow-large-slope-steep-narrow.obj-f2718fa611202448df96f0b3149c0c2f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
