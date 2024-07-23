@@ -654,36 +654,37 @@ jump_strength = 11
 [node name="Jewel1" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.9, -41)
 gem_color_str = "PINK"
-gem_shape_str = "SQUARE"
+gem_shape_str = "ROUND"
 
 [node name="Jewel2" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0.9, -42)
-gem_color_str = "BLUE"
+gem_color_str = "BLACK"
 gem_shape_str = "ROUND"
 
 [node name="Jewel3" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26, 2.55, -49)
-gem_color_str = "GREEN"
-gem_shape_str = "CHUNK"
+gem_color_str = "VIOLET"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel4" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 30, 4.55, -54)
-gem_color_str = "SKY"
+gem_color_str = "BLACK"
 gem_shape_str = "SQUARE"
 
 [node name="Jewel5" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 31.3408, 4.55, -59.1592)
-gem_color_str = "BLACK"
+gem_color_str = "RED"
 gem_shape_str = "ROUND"
 
 [node name="Jewel6" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 29.8559, 7.55, -72.2406)
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "PINK"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel7" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 31.7184, 7.55, -76.8808)
 gem_color_str = "PINK"
-gem_shape_str = "BROOCH"
+gem_shape_str = "TRAPEZIUM"
 
 [node name="Jewel8" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 28.1634, 7.55, -76.2388)
@@ -692,107 +693,107 @@ gem_shape_str = "BROOCH"
 
 [node name="Jewel9" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 29.4216, 8.33085, -84.0815)
-gem_color_str = "SKY"
-gem_shape_str = "ROUND"
+gem_color_str = "RED"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel10" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 25.2379, 10.55, -93.0535)
-gem_color_str = "BLACK"
-gem_shape_str = "CHUNK"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel11" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 19.3527, 10.55, -95.0445)
-gem_color_str = "GREEN"
-gem_shape_str = "CHUNK"
+gem_color_str = "BLACK"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel12" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 14.5943, 10.55, -97.4483)
 gem_color_str = "VIOLET"
-gem_shape_str = "CHUNK"
+gem_shape_str = "ROUND"
 
 [node name="Jewel20" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 6.8361, 11.1685, -78.6103)
-gem_color_str = "YELLOW"
-gem_shape_str = "ROUND"
+gem_color_str = "PEARL"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel21" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, 1.75198, 11.775, -78.9131)
-gem_color_str = "GREEN"
-gem_shape_str = "ROUND"
+gem_color_str = "BLUE"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel22" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 1.88921, 11.775, -64.2898)
-gem_color_str = "PEARL"
-gem_shape_str = "BROOCH"
+gem_color_str = "PINK"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel23" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 11.2115, 11.775, -68.5588)
-gem_color_str = "PEARL"
-gem_shape_str = "SQUARE"
+gem_color_str = "PINK"
+gem_shape_str = "TRAPEZIUM"
 
 [node name="Jewel24" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, 0.996195, 11.2837, 11.775, -73.9731)
-gem_color_str = "BLUE"
-gem_shape_str = "BROOCH"
+gem_color_str = "SKY"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel25" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871556, -2.8025, 11.775, -73.5994)
-gem_color_str = "VIOLET"
-gem_shape_str = "DIAMOND"
+gem_color_str = "GREEN"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel28" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-1, 0, -1.63913e-07, 0, 1, 0, 1.63913e-07, 0, -1, -20.1306, 12.4689, -75.3466)
-gem_color_str = "SKY"
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "YELLOW"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel29" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -21.2832, 12.4689, -71.277)
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "RED"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel26" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 6.37144, 11.775, -63.7908)
-gem_color_str = "RED"
+gem_color_str = "SKY"
 gem_shape_str = "TRIANGLE"
 
 [node name="Jewel27" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, -2.75631, 11.775, -69.1353)
-gem_color_str = "RED"
-gem_shape_str = "CHUNK"
+gem_color_str = "YELLOW"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel13" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 11.9558, 10.55, -102.397)
-gem_color_str = "YELLOW"
-gem_shape_str = "ROUND"
+gem_color_str = "PINK"
+gem_shape_str = "CHUNK"
 
 [node name="Jewel14" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -17.0408, 10.5, -99.2978)
-gem_color_str = "BLUE"
-gem_shape_str = "DIAMOND"
+gem_color_str = "YELLOW"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel15" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -21.3058, 10.5, -96.9105)
-gem_color_str = "BLACK"
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "VIOLET"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel16" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.642787, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642787, -21.3058, 10.5, -96.9105)
-gem_color_str = "BLACK"
+gem_color_str = "GREEN"
 gem_shape_str = "SQUARE"
 
 [node name="Jewel17" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.642787, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642787, -16.662, 10.5, -95.7552)
 gem_color_str = "VIOLET"
-gem_shape_str = "SQUARE"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel18" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -21.7659, 10.5, -92.6183)
-gem_color_str = "RED"
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "BLUE"
+gem_shape_str = "ROUND"
 
 [node name="Jewel19" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.573576, -26.1457, 10.5, -92.4539)
 gem_color_str = "YELLOW"
-gem_shape_str = "DIAMOND"
+gem_shape_str = "CHUNK"
 
 [node name="Destructibles" type="Node3D" parent="."]
 

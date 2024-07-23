@@ -30,6 +30,8 @@ var coins = 0
 @onready var anim_tree = $Llama/AnimationTree
 @onready var anim_state_machine = anim_tree["parameters/playback"]
 @onready var kick_collider = $Llama/KickArea
+@onready var spitball_scene = preload("res://src/projectiles/spitball/SpitBall.tscn")
+@onready var projectile_spawn = $Llama/ProjectileSpawn
 
 # Functions
 
@@ -50,7 +52,6 @@ func _physics_process(delta):
 	
 	handle_controls(delta)
 	handle_gravity(delta)
-	
 	handle_effects()
 	
 	if Input.is_action_just_pressed("kick"):
@@ -58,6 +59,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("spit"):
 		anim_state_machine.travel("Spit")
+		# TODO - crane neck and aim spitball towards camera aim postion
 	
 	# Movement
 
@@ -183,6 +185,14 @@ func kick():
 	if bodies: 
 		for body in bodies:
 			body.interact(model.global_transform.basis.z * 10)
+
+
+func spit():
+	var spitball = spitball_scene.instantiate()
+	spitball.add_collision_exception_with(self)
+	get_tree().get_root().add_child(spitball)
+	spitball.global_transform.origin = projectile_spawn.global_transform.origin
+	spitball.rotation.y = model.rotation.y
 
 # Collecting coins
 
