@@ -6,7 +6,8 @@ var dir = Vector3()
 @export var rotation_speed = 1.0
 @export var gravity = 10.0
 @onready var mesh = $Mesh
-var timeout: bool = false
+var source: Node3D
+
 
 func _ready():
 	var tween = get_tree().create_tween()
@@ -25,9 +26,9 @@ func _process(delta: float) -> void:
 	mesh.rotation.y += delta * rotation_speed
 
 
-func _on_body_entered(body: Node3D) -> void:
+func _on_collision_area_body_entered(body: Node3D) -> void:
+	if body == source:
+		return
+	if body.is_in_group("interactible"):
+		body.interact(transform.basis.z * 7)
 	queue_free()
-
-
-func _on_timer_timeout() -> void:
-	timeout = true

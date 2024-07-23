@@ -11,6 +11,9 @@ extends Node3D
 
 var shatter_origin: Vector3
 
+func _ready():
+	add_to_group("interactible")
+
 
 func interact(vel: Vector3 = Vector3.ZERO):
 	explode(vel)

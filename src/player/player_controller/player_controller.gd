@@ -24,14 +24,19 @@ var coins = 0
 #@onready var particles_trail = $ParticlesTrail
 #@onready var sound_footsteps = $SoundFootsteps
 @onready var model = $Llama
+@onready var skeleton = $Llama/rig/Skeleton3D
+@onready var skeleton_index_neck_look = skeleton.find_bone("ORG-spine.006")
+@onready var skeleton_index_head_look = skeleton.find_bone("ORG-head")
+@onready var neck_rest = skeleton.get_bone_rest(skeleton_index_neck_look)
 @onready var camera_pivot_h = $CameraHPivot
 @onready var camera_pivot_v = $CameraHPivot/CameraVPivot
+@onready var camera = $CameraHPivot/CameraVPivot/SpringArm3D/Camera3D
 @onready var animation = $Llama/AnimationPlayer
 @onready var anim_tree = $Llama/AnimationTree
 @onready var anim_state_machine = anim_tree["parameters/playback"]
 @onready var kick_collider = $Llama/KickArea
 @onready var spitball_scene = preload("res://src/projectiles/spitball/SpitBall.tscn")
-@onready var projectile_spawn = $Llama/ProjectileSpawn
+@onready var projectile_spawn = $Llama/rig/Skeleton3D/ProjectileSpawnAttachment/ProjectileSpawn
 
 # Functions
 
@@ -54,13 +59,35 @@ func _physics_process(delta):
 	handle_gravity(delta)
 	handle_effects()
 	
+	if Input.is_action_pressed("aim"):
+		# Crane neck and aim spitball towards camera aim postion
+		var bone_pose: Transform3D = skeleton.global_transform * skeleton.get_bone_global_pose(skeleton_index_neck_look)
+		var rest_pose = skeleton.get_bone_global_pose_no_override(skeleton_index_neck_look)
+		
+		var mouse_position_2d = get_viewport().get_mouse_position()
+		var dropPlane  = Plane(Vector3(0, 0, 1), 10)
+		var mouse_position_3d = camera.project_ray_origin(mouse_position_2d)
+		
+		# TODO - clamp the neck rotation
+		# We know the direction the mesh is pointing, we set an angular limit and 
+		# determine clamped bounds by rotating the mesh direction by this angular limit
+		
+		bone_pose = bone_pose.looking_at(mouse_position_3d, Vector3.UP)
+		skeleton.set_bone_global_pose_override(
+			skeleton_index_neck_look, 
+			skeleton.global_transform.affine_inverse() * bone_pose,
+			1.0,
+			true
+		)
+	elif Input.is_action_just_released("aim"):
+		skeleton.clear_bones_global_pose_override()
+	
 	if Input.is_action_just_pressed("kick"):
 		anim_state_machine.travel("Kick")
 	
 	if Input.is_action_just_pressed("spit"):
 		anim_state_machine.travel("Spit")
-		# TODO - crane neck and aim spitball towards camera aim postion
-	
+		
 	# Movement
 
 	var applied_velocity: Vector3
@@ -189,10 +216,19 @@ func kick():
 
 func spit():
 	var spitball = spitball_scene.instantiate()
-	spitball.add_collision_exception_with(self)
+	spitball.source = self
+	
 	get_tree().get_root().add_child(spitball)
+	
 	spitball.global_transform.origin = projectile_spawn.global_transform.origin
 	spitball.rotation.y = model.rotation.y
+	
+	if Input.is_action_pressed("aim"):
+		spitball.global_transform = projectile_spawn.global_transform
+		var position2D = get_viewport().get_mouse_position()
+		var dropPlane  = Plane(Vector3(0, 0, 1), 10)
+		var position3D = camera.project_ray_origin(position2D)
+		spitball.look_at(position3D)
 
 # Collecting coins
 
