@@ -44,6 +44,7 @@ var coins = 0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	anim_tree.active = true
 	anim_state_machine.start("Idle")
 
 func _input(event):
@@ -86,11 +87,16 @@ func _physics_process(delta):
 		skeleton.clear_bones_global_pose_override()
 		aiming_ui.visible = false
 	
+	if Input.is_action_just_pressed("spit"):
+		if Input.get_vector("move_left", "move_right", "move_forward", "move_back") != Vector2.ZERO:
+			if animation.current_animation != "WalkSpit":
+				anim_state_machine.travel("WalkSpit")
+				anim_tree.set("parameters/WalkSpit/spit_shot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		else:
+			anim_state_machine.travel("Spit")
+	
 	if Input.is_action_just_pressed("kick"):
 		anim_state_machine.travel("Kick")
-	
-	if Input.is_action_just_pressed("spit"):
-		anim_state_machine.travel("Spit")
 		
 	# Movement
 
