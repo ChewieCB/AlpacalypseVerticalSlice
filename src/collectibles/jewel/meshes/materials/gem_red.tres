@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://bmqnqehuy7yho"]
+
+[ext_resource type="Texture2D" uid="uid://b4k5qrevb2xm5" path="res://assets/collectibles/gems/TEXTURES/GLTF/RED/GEMS_baseColor.png" id="1_occue"]
+[ext_resource type="Texture2D" uid="uid://b153bwde03iiw" path="res://assets/collectibles/gems/TEXTURES/PBR METAL ROUGH/GREEN/Emissive.png" id="2_lspa2"]
+[ext_resource type="Texture2D" uid="uid://bkqat157ttnro" path="res://assets/collectibles/gems/TEXTURES/PBR METAL ROUGH/GREEN/Height.png" id="3_p07nn"]
+[ext_resource type="Texture2D" uid="uid://br2e8ibmkvpa1" path="res://assets/collectibles/gems/TEXTURES/PBR METAL ROUGH/GREEN/Metallic.png" id="4_jjreu"]
+[ext_resource type="Texture2D" uid="uid://b372s86gtjpcf" path="res://assets/collectibles/gems/TEXTURES/GLTF/BLUE/GEMS_normal.png" id="5_86c72"]
+[ext_resource type="Texture2D" uid="uid://dpqi6f0ha0kww" path="res://assets/collectibles/gems/TEXTURES/PBR METAL ROUGH/GREEN/Roughness.png" id="6_52jxa"]
+
+[resource]
+albedo_texture = ExtResource("1_occue")
+metallic = 1.0
+metallic_texture = ExtResource("4_jjreu")
+roughness_texture = ExtResource("6_52jxa")
+emission_enabled = true
+emission_texture = ExtResource("2_lspa2")
+normal_enabled = true
+normal_texture = ExtResource("5_86c72")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_p07nn")

@@ -1,63 +1,53 @@
 [gd_scene load_steps=7 format=4 uid="uid://4tg3k26hd4dv"]
 
 [ext_resource type="Script" path="res://src/collectibles/jewel/jewel.gd" id="1_328bc"]
-[ext_resource type="Texture2D" uid="uid://c4i37dh4a5ld1" path="res://assets/placeholder/kenney_platformer/Models/GLB format/Textures/colormap.png" id="2_lu0te"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7oos"]
-resource_name = "colormap"
-cull_mode = 2
-albedo_texture = ExtResource("2_lu0te")
-metallic = 0.35
-metallic_specular = 1.0
-roughness = 0.1
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_ojeks"]
-_surfaces = [{
-"aabb": AABB(-0.16644, 0, -0.144141, 0.33288, 0.370482, 0.288283),
-"format": 34896613377,
-"index_count": 36,
-"index_data": PackedByteArray("AgAAAAEAAwACAAEAAgAEAAAABAAFAAYAAQAAAAYABgAFAAEABAAHAAUAAwABAAcABAACAAMAAwAHAAQABwABAAUAAAAEAAYA"),
-"name": "colormap",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("////f/9/AAD/fwAA/38AAP+//3///wAA/z//f///AAD/f////38AAP8//38AAAAA/7//fwAAAAAAAP9//38AAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_4yb7q"]
-resource_name = "jewel_jewel"
-_surfaces = [{
-"aabb": AABB(-0.16644, 0, -0.144141, 0.33288, 0.370482, 0.288283),
-"attribute_data": PackedByteArray("/7f/n/+3mLn/t/+f/7f/n/+3mLn/t/+f/7dlhv+3/5//t/+f/7f/n/+3/5//t2WG/7f/n/+3/5//t5i5/7f/n/+3mLn/t/+f/7f/n/+3/5//t2WG/7eYuf+3/5//t/+f/7f/n/+3/5//t2WG/7f/n/+3ZYb/t/+f/7eYuf+3/5//t/+f/7dlhv+3/5//t/+f"),
-"format": 34896613399,
-"index_count": 36,
-"index_data": PackedByteArray("AgAAAAEABQADAAQACAAGAAcACwAJAAoADgAMAA0AEQAPABAAFAASABMAFwAVABYAGgAYABkAHQAbABwAIAAeAB8AIwAhACIA"),
-"material": SubResource("StandardMaterial3D_x7oos"),
-"name": "colormap",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("////f/9/x7H/fwAA/3/Hsf+//3///8ex/7//f///8Jr/fwAA/3/wmv8//3////Ca/3////9/x7H///9//3/Hsf+//3///8ex/z//fwAA////v/9/AAD///9/////f///////f/9/29f/v/9/AADb1/9/AAD/f9vX/z//fwAA////fwAA/3////+//38AAP//AAD/f/9/29f/P/9/AADb1/9/////f9vX/38AAP9/x7EAAP9//3/Hsf8//3///8ex/7//f///8Jr/P/9////wmv9/////f/CaAAD/f/9/x7H/f////3/Hsf8//3///8ex/38AAP9/29f/P/9/AADb1wAA/3//f9vX/3////9/29f/v/9/AADb1////3//f9vXuljxPbpY8T26WPE9AAD/fwAA/38AAP9/8L1FJ/C9RSfwvUUn/39K3/9/St//f0rfim/1LIpv9SyKb/UstKD//7Sg//+0oP//dJAJ03SQCdN0kAnTDkK52A5CudgOQrnY////f////3////9/RKcNwkSnDcJEpw3CClOK7wpTiu8KU4rv9Kx0EPSsdBD0rHQQ")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ojeks")
+[ext_resource type="PackedScene" uid="uid://4kcyalltwiaa" path="res://src/collectibles/jewel/meshes/Gem01.tscn" id="2_s26vc"]
+[ext_resource type="Material" uid="uid://blifl1vqr4jlv" path="res://src/collectibles/jewel/meshes/materials/gem_orange.tres" id="3_0lcot"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_w6mmg"]
 radius = 1.0
 
+[sub_resource type="ArrayMesh" id="ArrayMesh_ht5d0"]
+_surfaces = [{
+"aabb": AABB(-0.67319, -0.768931, -0.760485, 1.34586, 0.983882, 1.50872),
+"format": 34359742465,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAwACAAQABQAEAAYABwAIAAkAAAAKAAsABQAMAAoAAwAFAAoAAAADAAoADAAGAAgAAQAHAAkAAgABAAkABAACAAkACAAGAAkACwAHAAEACgAHAAsACgAMAAgACwABAAAAAAACAAMAAwAEAAUABQAGAAwACgAIAAcABgAEAAkA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 13,
+"vertex_data": PackedByteArray("BpZcPkQcXD7X574+7jMsP91iRb2sj8Y+A6vOPPrG6L08jD8/LJd7vkQcXD5xscs+KVYsv/R9mL2kj8Y+6vbpvkQcXD6PsTe6SEQhv9TNCr7UQba+7jMsP/R9mL1WR8e+nuqIufJ9mL0pr0K/nuqIuajYRL+PsTe6BpZcPkQcXD6Kn7++H1bsPkQcXD6PsTe6uGqDvkQcXD6BNtO+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_25m4o"]
+resource_local_to_scene = true
+resource_name = "Plane_001"
+_surfaces = [{
+"aabb": AABB(-0.67319, -0.768931, -0.760485, 1.34586, 0.983882, 1.50872),
+"attribute_data": PackedByteArray("WSRQP0gS9D1w2lo/0OigPXDaWj+AmyQ+dXNEPwQ9Aj4Cpk4/AA+mPQKmTj+QDCw+uZ14PdDSlT25nXg9jO0GPpCvGTvYK5Y9+GUWP6zgBj8sVwI/qAH9PvhlFj/0ztI+MPEZPPxt8T6eurs9DATuPmz4Vz0Qmv0+vWQ2PbjQyT6eurs9tjnTPqDYJTsWjNc+LaBlP5c7Jj9ctG8/U7YbP1y0bz/68jA/qHx8Pm7j1z6ofHw+ru4BP6gNDj6WOu8+2NQrP7biBj9QqRc/iOcAP9jUKz8cd9U+k+AcP+NPfz8X2Ag/dJ51P5PgHD+v1mE/KRIxP3JQfz/8IR4/TLR1PykSMT/hM2I/aNVhP4pmXj+2qWs/eCRTP7apaz9xIWk/pIxyP7jx9D6kjHI/RcgJP6syZz+eDwA//J1lP2b0ED/pqXE/3xgLP+mpcT/4zhk/+U10P7AdAT74TXQ/iFI7PhK8aD/wmRU+LigJP7oqCD8uKAk/REQXP7pN+j4QTw0/rh0rP8jP0T2Bwx0/sIGiPawdKz/Qglc9+0Y9P2AOTz37Rj0/sAjfPdjJMT+oW5c9kQBfP4lBRD8Lh2k/f6M5PwuHaT/eX08/UIEcP7TfpT5QgRw/MijQPolgAj9C4bQ+"),
+"format": 34359742487,
+"index_count": 66,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQAA0AEQAPAA0ADAARAA0AEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsA"),
+"material": ExtResource("3_0lcot"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("BpZcPkQcXD7X574+7jMsP91iRb2sj8Y+A6vOPPrG6L08jD8/LJd7vkQcXD5xscs+A6vOPPrG6L08jD8/KVYsv/R9mL2kj8Y+6vbpvkQcXD6PsTe6KVYsv/R9mL2kj8Y+SEQhv9TNCr7UQba+7jMsP/R9mL1WR8e+nuqIufJ9mL0pr0K/nuqIuajYRL+PsTe6BpZcPkQcXD7X574+BpZcPkQcXD6Kn7++H1bsPkQcXD6PsTe66vbpvkQcXD6PsTe6uGqDvkQcXD6BNtO+LJd7vkQcXD5xscs+uGqDvkQcXD6BNtO+SEQhv9TNCr7UQba+nuqIufJ9mL0pr0K/7jMsP91iRb2sj8Y+7jMsP/R9mL1WR8e+nuqIuajYRL+PsTe6A6vOPPrG6L08jD8/7jMsP91iRb2sj8Y+nuqIuajYRL+PsTe6KVYsv/R9mL2kj8Y+A6vOPPrG6L08jD8/nuqIuajYRL+PsTe6nuqIufJ9mL0pr0K/SEQhv9TNCr7UQba+nuqIuajYRL+PsTe6H1bsPkQcXD6PsTe67jMsP/R9mL1WR8e+7jMsP91iRb2sj8Y+BpZcPkQcXD6Kn7++7jMsP/R9mL1WR8e+H1bsPkQcXD6PsTe6BpZcPkQcXD6Kn7++uGqDvkQcXD6BNtO+nuqIufJ9mL0pr0K/H1bsPkQcXD6PsTe67jMsP91iRb2sj8Y+BpZcPkQcXD7X574+BpZcPkQcXD7X574+A6vOPPrG6L08jD8/LJd7vkQcXD5xscs+LJd7vkQcXD5xscs+KVYsv/R9mL2kj8Y+6vbpvkQcXD6PsTe66vbpvkQcXD6PsTe6SEQhv9TNCr7UQba+uGqDvkQcXD6BNtO+BpZcPkQcXD6Kn7++nuqIufJ9mL0pr0K/7jMsP/R9mL1WR8e+SEQhv9TNCr7UQba+KVYsv/R9mL2kj8Y+nuqIuajYRL+PsTe6opmnrxacyKGimaevFpzIoaKZp68WnMihhmP+p4ZpOZ2GY/6nhmk5nYZj/qeGaTmdGi0ntR2ZeNkaLSe1HZl42RotJ7UdmXjZEcuxGh61HbURy7EaHrUdtRHLsRoetR21/3//////Mvv/f/////8y+/9//////zL7/3//////Mvv/f/////8y+/9//////zL7syDK2ANOeIezIMrYA054h7MgytgDTniHisCeQoq/UOGKwJ5Cir9Q4YrAnkKKv1DhX55hSxMxoLNfnmFLEzGgs1+eYUsTMaCzi2TeSvkUcpqLZN5K+RRymotk3kr5FHKaPTUYGmDpWao9NRgaYOlZqj01GBpg6VmqXMl7uG22apxcyXu4bbZqnFzJe7httmqc4MDj2PoX/ojgwOPY+hf+iODA49j6F/6IwLqX+0cWw6PAupf7RxbDo8C6l/tHFsOjRaUpwsHtjp9FpSnCwe2On0WlKcLB7Y6fM4OswQPTR7Qzg6zBA9NHtDODrMED00e0LFV4vlLRa+UsVXi+UtFr5SxVeL5S0WvlEDM8zDlNyLIQMzzMOU3IshAzPMw5TciyPtB24//C6Is+0Hbj/8Loiz7QduP/wuiLIEBOQUI8U+IgQE5BQjxT4iBATkFCPFPi")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ht5d0")
+
 [node name="Jewel" type="AnimatableBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -41)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_328bc")
-
-[node name="Jewel" type="MeshInstance3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-mesh = SubResource("ArrayMesh_4yb7q")
-skeleton = NodePath("")
+gem_color_str = "ORANGE"
+gem_shape_str = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_w6mmg")
+
+[node name="Mesh" parent="." instance=ExtResource("2_s26vc")]
+transform = Transform3D(-0.740324, 0, -0.66957, 0, 1, 0, 0.66957, 0, -0.740324, 0, 0.2, 0)
+mesh = SubResource("ArrayMesh_25m4o")

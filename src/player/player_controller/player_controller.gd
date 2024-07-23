@@ -29,6 +29,7 @@ var coins = 0
 @onready var animation = $Llama/AnimationPlayer
 @onready var anim_tree = $Llama/AnimationTree
 @onready var anim_state_machine = anim_tree["parameters/playback"]
+@onready var kick_collider = $Llama/KickArea
 
 # Functions
 
@@ -175,6 +176,13 @@ func jump():
 	
 	jump_single = false;
 	jump_double = true;
+
+
+func kick():
+	var bodies = kick_collider.get_overlapping_bodies()
+	if bodies: 
+		for body in bodies:
+			body.interact(model.global_transform.basis.z * 10)
 
 # Collecting coins
 

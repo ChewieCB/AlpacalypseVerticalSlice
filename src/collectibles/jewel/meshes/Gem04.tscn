@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=4 uid="uid://bpqpck853o165"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4e5pl"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5gtm1"]
+_surfaces = [{
+"aabb": AABB(-0.78939, -0.901204, -0.832605, 1.5713, 1.17267, 1.29822),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAwAFAAQABAABAAAAAgABAAQABAAFAAIAAgAFAAYABQADAAYAAwACAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 7,
+"vertex_data": PackedByteArray("Iz2rPmf9ij7lsis+15GGO7efdz5vrM2+40H9vHTpKj2SJVW/HStIP/gKGT2mZe4+idqJvmf9ij7v7C0+cRVKv/gKGT1Uot4+40H9vEy1Zr8WKXC7")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_smv24"]
+resource_name = "Plane_003"
+_surfaces = [{
+"aabb": AABB(-0.78939, -0.901204, -0.832605, 1.5713, 1.17267, 1.29822),
+"attribute_data": PackedByteArray("AjUlP8R5Pz/UbCY/AGYqPxt+Lz/iHh4/G34vPy4yTz9ZWPs+HPY7P1Km+j47nyg/Jz8JP3QaGj8nPwk/DXVMP43PDT5EaV8+FOVQPiiCMT4U5VA+mvqCPtefBz/2MH8/MJ36Pnzxcz81ZvY+RLtfP9efBz/Q3U8/DlkOPkiAPz9+TJM+3mAjP35Mkz7ug0w/gHYIPnjRTD+Adgg+Eix/PwCNODv+1mQ/+6uJPtkaTj/7q4k+Ii5/Pyk6Dj5TlWg/"),
+"format": 34359742487,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACwAMAA0ADQAOAAsADwAQABEAEgATABQAFQAWABcA"),
+"material": SubResource("StandardMaterial3D_4e5pl"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("Iz2rPmf9ij7lsis+15GGO7efdz5vrM2+40H9vHTpKj2SJVW/HStIP/gKGT2mZe4+idqJvmf9ij7v7C0+Iz2rPmf9ij7lsis+HStIP/gKGT2mZe4+cRVKv/gKGT1Uot4+idqJvmf9ij7v7C0+15GGO7efdz5vrM2+Iz2rPmf9ij7lsis+40H9vHTpKj2SJVW/15GGO7efdz5vrM2+idqJvmf9ij7v7C0+cRVKv/gKGT1Uot4+40H9vHTpKj2SJVW/cRVKv/gKGT1Uot4+40H9vEy1Zr8WKXC7cRVKv/gKGT1Uot4+HStIP/gKGT2mZe4+40H9vEy1Zr8WKXC7HStIP/gKGT2mZe4+40H9vHTpKj2SJVW/40H9vEy1Zr8WKXC7N8vH0SjJb5Y3y8fRKMlvljfLx9EoyW+WN8vH0SjJb5Y9f4PFpn5Eoz1/g8WofkOjPX+Dxad+Q6M9f4PFpX5Eo6d5+f+e/cmnp3n5/579yaenefn/nv3Jp1I+edYHLpWZUj551gculJlSPnnWBy6VmVI+edYHLpaZvR8mPG1vsam9HyY8bW+xqb0fJjxtb7GpVH7aVi9/4upUftpWL3/i6lR+2lYvf+Lqld+2OhyygfCV37Y6HLKB8JXftjocsoHw")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_5gtm1")
+
+[node name="Mesh" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_smv24")
+skeleton = NodePath("")

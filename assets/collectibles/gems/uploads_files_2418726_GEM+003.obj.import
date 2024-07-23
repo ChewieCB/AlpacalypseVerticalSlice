@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c0bpgl0460t1s"
+path="res://.godot/imported/uploads_files_2418726_GEM+003.obj-68ca6fdffe255fec1a718c11c50460bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uploads_files_2418726_GEM+003.obj-68ca6fdffe255fec1a718c11c50460bf.mesh"]
+
+source_file="res://assets/collectibles/gems/uploads_files_2418726_GEM+003.obj"
+dest_files=["res://.godot/imported/uploads_files_2418726_GEM+003.obj-68ca6fdffe255fec1a718c11c50460bf.mesh", "res://.godot/imported/uploads_files_2418726_GEM+003.obj-68ca6fdffe255fec1a718c11c50460bf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

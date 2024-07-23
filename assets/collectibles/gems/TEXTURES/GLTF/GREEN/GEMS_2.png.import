@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://domm241r772r3"
+path.s3tc="res://.godot/imported/GEMS_2.png-0fa2f722727428d653d8234f5d710b27.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "94bc8b556ccc08a06b52b8295db19af3"
+}
+
+[deps]
+
+source_file="res://assets/collectibles/gems/TEXTURES/GLTF/GREEN/GEMS_2.png"
+dest_files=["res://.godot/imported/GEMS_2.png-0fa2f722727428d653d8234f5d710b27.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/collectibles/gems/TEXTURES/GLTF/GREEN/GEMS_2.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
