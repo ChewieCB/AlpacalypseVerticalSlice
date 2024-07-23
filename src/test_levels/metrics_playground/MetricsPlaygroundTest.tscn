@@ -24,6 +24,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="LevelGeometry" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Tunnel" type="CSGCombiner3D" parent="LevelGeometry"]
 operation = 2
@@ -652,156 +653,209 @@ jump_strength = 11
 [node name="Collectibles" type="Node3D" parent="."]
 
 [node name="Jewel1" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.9, -41)
-gem_color_str = "SKY"
-gem_shape_str = "ROUND"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.05, -41)
+gem_color_str = "PEARL"
+gem_shape_str = "CHUNK"
 
 [node name="Jewel2" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0.9, -42)
-gem_color_str = "PINK"
-gem_shape_str = "BROOCH"
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 1.05, -42)
+gem_color_str = "VIOLET"
+gem_shape_str = "CHUNK"
 
 [node name="Jewel3" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26, 2.55, -49)
-gem_color_str = "SKY"
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26, 3.05, -49)
+gem_color_str = "GREEN"
 gem_shape_str = "SQUARE"
 
 [node name="Jewel4" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 30, 4.55, -54)
-gem_color_str = "PEARL"
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 30, 5.05, -54)
+gem_color_str = "BLACK"
 gem_shape_str = "CHUNK"
 
 [node name="Jewel5" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 31.3408, 4.55, -59.1592)
-gem_color_str = "RED"
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 31.3408, 5.05, -59.1592)
+gem_color_str = "BLUE"
 gem_shape_str = "SQUARE"
 
 [node name="Jewel6" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 29.8559, 7.55, -72.2406)
-gem_color_str = "BLUE"
+transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 29.8559, 8.05, -72.2406)
+gem_color_str = "VIOLET"
 gem_shape_str = "ROUND"
 
 [node name="Jewel7" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 31.7184, 7.55, -76.8808)
-gem_color_str = "PINK"
-gem_shape_str = "TRAPEZIUM"
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 31.7184, 8.05, -76.8808)
+gem_color_str = "GREEN"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel8" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 28.1634, 7.55, -76.2388)
-gem_color_str = "SKY"
+transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 28.1634, 8.05, -76.2388)
+gem_color_str = "YELLOW"
 gem_shape_str = "DIAMOND"
 
 [node name="Jewel9" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 29.4216, 8.33085, -84.0815)
-gem_color_str = "PEARL"
-gem_shape_str = "DIAMOND"
+transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 29.4216, 8.83086, -84.0815)
+gem_color_str = "RED"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel10" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 25.2379, 10.55, -93.0535)
-gem_color_str = "YELLOW"
-gem_shape_str = "SQUARE"
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 25.2379, 11.05, -93.0535)
+gem_color_str = "GREEN"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel11" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 19.3527, 10.55, -95.0445)
-gem_color_str = "PINK"
-gem_shape_str = "DIAMOND"
+transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 19.3527, 11.05, -95.0445)
+gem_color_str = "PEARL"
+gem_shape_str = "BROOCH"
 
 [node name="Jewel12" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 14.5943, 10.55, -97.4483)
-gem_color_str = "YELLOW"
-gem_shape_str = "TRIANGLE"
-
-[node name="Jewel20" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 6.8361, 11.1685, -78.6103)
-gem_color_str = "SKY"
-gem_shape_str = "SQUARE"
-
-[node name="Jewel21" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, 1.75198, 11.775, -78.9131)
-gem_color_str = "GREEN"
-gem_shape_str = "CHUNK"
-
-[node name="Jewel22" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 1.88921, 11.775, -64.2898)
-gem_color_str = "YELLOW"
-gem_shape_str = "TRIANGLE"
-
-[node name="Jewel23" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 11.2115, 11.775, -68.5588)
-gem_color_str = "RED"
-gem_shape_str = "DIAMOND"
-
-[node name="Jewel24" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, 0.996195, 11.2837, 11.775, -73.9731)
+transform = Transform3D(0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 14.5943, 11.05, -97.4483)
 gem_color_str = "PEARL"
 gem_shape_str = "CHUNK"
 
-[node name="Jewel25" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871556, -2.8025, 11.775, -73.5994)
+[node name="Jewel20" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 6.8361, 12.275, -78.6103)
 gem_color_str = "BLACK"
+gem_shape_str = "TRIANGLE"
+
+[node name="Jewel21" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, 1.75198, 12.275, -78.9131)
+gem_color_str = "PEARL"
+gem_shape_str = "ROUND"
+
+[node name="Jewel22" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 1.88921, 12.275, -64.2898)
+gem_color_str = "GREEN"
 gem_shape_str = "TRAPEZIUM"
 
-[node name="Jewel28" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-1, 0, -1.63913e-07, 0, 1, 0, 1.63913e-07, 0, -1, -20.1306, 12.4689, -75.3466)
-gem_color_str = "YELLOW"
-gem_shape_str = "BROOCH"
-
-[node name="Jewel29" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -21.2832, 12.4689, -71.277)
-gem_color_str = "BLUE"
-gem_shape_str = "ROUND"
-
-[node name="Jewel26" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 6.37144, 11.775, -63.7908)
-gem_shape_str = "ROUND"
-
-[node name="Jewel27" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, -2.75631, 11.775, -69.1353)
-gem_color_str = "GREEN"
-gem_shape_str = "CHUNK"
-
-[node name="Jewel13" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 11.9558, 10.55, -102.397)
+[node name="Jewel23" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 11.2115, 12.275, -68.5588)
 gem_color_str = "SKY"
-gem_shape_str = "BROOCH"
+gem_shape_str = "TRIANGLE"
 
-[node name="Jewel14" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -17.0408, 10.5, -99.2978)
-gem_color_str = "GREEN"
-gem_shape_str = "TRAPEZIUM"
-
-[node name="Jewel15" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -21.3058, 10.5, -96.9105)
-gem_color_str = "BLUE"
-gem_shape_str = "DIAMOND"
-
-[node name="Jewel16" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.642787, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642787, -21.3058, 10.5, -96.9105)
+[node name="Jewel24" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, 0.996195, 11.2837, 12.275, -73.9731)
 gem_color_str = "PINK"
-gem_shape_str = "ROUND"
+gem_shape_str = "TRIANGLE"
 
-[node name="Jewel17" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.642787, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642787, -16.662, 10.5, -95.7552)
+[node name="Jewel25" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871556, -2.8025, 12.275, -73.5994)
 gem_color_str = "VIOLET"
 gem_shape_str = "SQUARE"
 
+[node name="Jewel28" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-1, 0, -1.63913e-07, 0, 1, 0, 1.63913e-07, 0, -1, -20.1306, 12.967, -75.3466)
+gem_color_str = "YELLOW"
+gem_shape_str = "DIAMOND"
+
+[node name="Jewel29" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -21.2832, 12.9671, -71.277)
+gem_color_str = "PINK"
+gem_shape_str = "BROOCH"
+
+[node name="Jewel26" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 6.37144, 12.275, -63.7908)
+gem_color_str = "GREEN"
+gem_shape_str = "DIAMOND"
+
+[node name="Jewel27" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, -2.75631, 12.275, -69.1353)
+gem_shape_str = "BROOCH"
+
+[node name="Jewel13" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 11.9558, 11.05, -102.397)
+gem_color_str = "BLUE"
+gem_shape_str = "ROUND"
+
+[node name="Jewel14" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -17.0408, 11, -99.2978)
+gem_color_str = "SKY"
+gem_shape_str = "TRIANGLE"
+
+[node name="Jewel17" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(0.642787, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642787, -16.662, 11, -95.7552)
+gem_color_str = "SKY"
+gem_shape_str = "CHUNK"
+
 [node name="Jewel18" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -21.7659, 10.5, -92.6183)
-gem_color_str = "RED"
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -21.7659, 11, -92.6183)
+gem_color_str = "PINK"
 gem_shape_str = "SQUARE"
 
 [node name="Jewel19" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.573576, -26.1457, 10.5, -92.4539)
-gem_color_str = "YELLOW"
-gem_shape_str = "TRIANGLE"
+transform = Transform3D(-0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.573576, -26.1457, 11, -92.4539)
+gem_color_str = "BLUE"
+gem_shape_str = "DIAMOND"
 
 [node name="Destructibles" type="Node3D" parent="."]
 
 [node name="Crate" parent="Destructibles" instance=ExtResource("8_xshtj")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 4.51061, 0.0500001, -55.0671)
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 6.21061, 0.0500001, -55.4671)
 
 [node name="Crate2" parent="Destructibles" instance=ExtResource("8_xshtj")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 9.66841, 0.0500001, -56.033)
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 10.1684, 0.0500001, -56.933)
 
 [node name="Crate3" parent="Destructibles" instance=ExtResource("8_xshtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0517, 0.0500001, -57.579)
+transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 13.8517, 0.0500001, -58.379)
+
+[node name="Crate16" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-8.9407e-08, 0, 1, 0, 1, 0, -1, 0, -8.9407e-08, 26.1517, 6.05, -65.379)
+
+[node name="Crate17" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 22.5517, 15.05, -39.979)
+
+[node name="Crate18" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 18.7929, 15.05, -38.6109)
+
+[node name="Crate19" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 15.0342, 15.05, -37.2428)
+
+[node name="Crate20" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, 11.2754, 15.05, -35.8748)
+
+[node name="Crate21" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -11.8156, 15.05, -36.5743)
+
+[node name="Crate22" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -15.2797, 15.05, -38.5743)
+
+[node name="Crate23" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -18.7438, 15.05, -40.5743)
+
+[node name="Crate24" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -22.2079, 15.05, -42.5743)
+
+[node name="Crate4" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -9.22106, 0.0500001, -80.6921)
+
+[node name="Crate5" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -10.9831, 0.0500001, -76.857)
+
+[node name="Crate6" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, -0.34202, -12.5651, 0.0500001, -73.23)
+
+[node name="Crate7" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 13.5426, 0.0500001, -83.9243)
+
+[node name="Crate10" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, -0.906308, -28.0574, 0.0500001, -91.2243)
+
+[node name="Crate11" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, -0.906308, -25.7574, 0.0500001, -90.2243)
+
+[node name="Crate12" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, -0.5, -18.4574, 0.0500001, -101.124)
+
+[node name="Crate13" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.819152, 0, 0.573577, 0, 1, 0, -0.573577, 0, -0.819152, -21.5574, 0.0500001, -98.9243)
+
+[node name="Crate14" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.642788, 0, 0.766045, 0, 1, 0, -0.766045, 0, -0.642788, -21.7574, 10, -97.3243)
+
+[node name="Crate15" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -21.4574, 11.575, -97.6243)
+
+[node name="Crate8" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 9.70752, 0.0500001, -85.6864)
+
+[node name="Crate9" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 6.08056, 0.0500001, -87.2684)

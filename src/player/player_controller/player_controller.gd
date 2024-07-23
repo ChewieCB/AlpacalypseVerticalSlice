@@ -38,6 +38,8 @@ var coins = 0
 @onready var spitball_scene = preload("res://src/projectiles/spitball/SpitBall.tscn")
 @onready var projectile_spawn = $Llama/rig/Skeleton3D/ProjectileSpawnAttachment/ProjectileSpawn
 
+@onready var aiming_ui = $UI/AimingUI
+
 # Functions
 
 func _ready():
@@ -60,6 +62,7 @@ func _physics_process(delta):
 	handle_effects()
 	
 	if Input.is_action_pressed("aim"):
+		aiming_ui.visible = true
 		# Crane neck and aim spitball towards camera aim postion
 		var bone_pose: Transform3D = skeleton.global_transform * skeleton.get_bone_global_pose(skeleton_index_neck_look)
 		var rest_pose = skeleton.get_bone_global_pose_no_override(skeleton_index_neck_look)
@@ -81,6 +84,7 @@ func _physics_process(delta):
 		)
 	elif Input.is_action_just_released("aim"):
 		skeleton.clear_bones_global_pose_override()
+		aiming_ui.visible = false
 	
 	if Input.is_action_just_pressed("kick"):
 		anim_state_machine.travel("Kick")
@@ -221,14 +225,16 @@ func spit():
 	get_tree().get_root().add_child(spitball)
 	
 	spitball.global_transform.origin = projectile_spawn.global_transform.origin
-	spitball.rotation.y = model.rotation.y
+	spitball.basis.z = -model.basis.z
 	
 	if Input.is_action_pressed("aim"):
 		spitball.global_transform = projectile_spawn.global_transform
 		var position2D = get_viewport().get_mouse_position()
 		var dropPlane  = Plane(Vector3(0, 0, 1), 10)
-		var position3D = camera.project_ray_origin(position2D)
-		spitball.look_at(position3D)
+		var from = camera.project_ray_origin(position2D)
+		var to = from + camera.project_ray_normal(position2D) * 100
+		to.y += $CameraHPivot/CameraVPivot/SpringArm3D.global_transform.origin.y
+		spitball.look_at(to)
 
 # Collecting coins
 

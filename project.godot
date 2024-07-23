@@ -15,6 +15,10 @@ run/main_scene="res://src/test_levels/metrics_playground/MetricsPlaygroundTest.t
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Draw3d="*res://src/utils/draw_3d.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/draw3d/plugin.cfg")
