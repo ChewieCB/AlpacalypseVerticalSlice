@@ -33,7 +33,8 @@ var coins = 0
 @onready var camera = $CameraHPivot/CameraVPivot/SpringArm3D/Camera3D
 @onready var animation = $Llama/AnimationPlayer
 @onready var anim_tree = $Llama/AnimationTree
-@onready var anim_state_machine = anim_tree["parameters/playback"]
+@onready var anim_jump_state = anim_tree["parameters/JumpState/playback"]
+#@onready var anim_state_machine = anim_tree["parameters/playback"]
 @onready var kick_collider = $Llama/KickArea
 @onready var spitball_scene = preload("res://src/projectiles/spitball/SpitBall.tscn")
 @onready var projectile_spawn = $Llama/rig/Skeleton3D/ProjectileSpawnAttachment/ProjectileSpawn
@@ -46,7 +47,8 @@ var coins = 0
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	anim_tree.active = true
-	anim_state_machine.start("Idle")
+	#anim_state_machine.start("Idle")
+	anim_tree.set("parameters/Transition/current_state", "idle")
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -88,16 +90,16 @@ func _physics_process(delta):
 		skeleton.clear_bones_global_pose_override()
 		aiming_ui.visible = false
 	
-	if Input.is_action_just_pressed("spit"):
-		var anim_state = anim_state_machine.get_current_node()
-		var param_name = "parameters/%s/spit/request" % [anim_state]
-		#if anim_tree.get(param_name):
-		if not anim_tree.get("parameters/%s/spit/active" % [anim_state]):
-			anim_tree.set(param_name, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	#var anim_state = anim_state_machine.get_current_node()
 	
-	if Input.is_action_just_pressed("kick"):
-		anim_state_machine.travel("Kick")
-		
+	if Input.is_action_just_pressed("spit"):
+		if not anim_tree.get("parameters/spit/active"):
+			anim_tree.set("parameters/spit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	
+	elif Input.is_action_just_pressed("kick"):
+		if not anim_tree.get("parameters/kick/active"):
+			anim_tree.set("parameters/kick/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
 	# Movement
 
 	var applied_velocity: Vector3
@@ -128,7 +130,7 @@ func _physics_process(delta):
 	
 	if is_on_floor() and gravity > 2 and !previously_floored:
 		model.scale = Vector3(1.25, 0.75, 1.25)
-		anim_state_machine.travel("JumpEnd")
+		anim_jump_state.travel("JumpEnd")
 		#Audio.play("res://sounds/land.ogg")
 	
 	previously_floored = is_on_floor()
@@ -143,13 +145,14 @@ func handle_effects():
 	#
 	if is_on_floor():
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
-			anim_state_machine.travel("Walk")
+			anim_tree.set("parameters/Transition/transition_request", "walk")
 			#particles_trail.emitting = true
 			#sound_footsteps.stream_paused = false
 		else:
-			anim_state_machine.travel("Idle")
+			anim_tree.set("parameters/Transition/transition_request", "idle")
 	else:
-		anim_state_machine.travel("JumpAir")
+		anim_tree.set("parameters/Transition/transition_request", "jump")
+		anim_jump_state.travel("JumpAir")
 
 # Handle movement input
 
@@ -165,7 +168,7 @@ func handle_controls(delta):
 	movement_velocity = direction * movement_speed * delta
 	
 	if input != Vector2.ZERO:
-		#direction = -camera_pivot_h.global_transform.basis.z	
+		#direction = -camera_pivot_h.global_transform.basis.z
 		model.rotation.y = lerp_angle(model.rotation.y, atan2(direction.x, direction.z), delta * 12)
 	
 	if Input.is_action_just_pressed("ui_cancel"):
