@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cglrgboma8l2n"]
+
+[ext_resource type="Shader" uid="uid://c8d3pkvbx0d2y" path="res://src/projectiles/particles/splash_particle_shader.tres" id="1_o3fh4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg21t"]
+render_priority = 0
+shader = ExtResource("1_o3fh4")
+
+[sub_resource type="Curve" id="Curve_nradh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.477953), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2eitr"]
+curve = SubResource("Curve_nradh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0r5jc"]
+emission_shape = 1
+emission_sphere_radius = 0.5
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+linear_accel_min = 4.0
+linear_accel_max = 4.0
+scale_min = 3.0
+scale_max = 4.0
+scale_curve = SubResource("CurveTexture_2eitr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pp8a6"]
+
+[node name="SpitImpactParticle" type="GPUParticles3D"]
+material_override = SubResource("ShaderMaterial_bg21t")
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+visibility_aabb = AABB(-3, -3, -3, 6, 6, 6)
+process_material = SubResource("ParticleProcessMaterial_0r5jc")
+draw_pass_1 = SubResource("QuadMesh_pp8a6")

@@ -6,6 +6,7 @@ var dir = Vector3()
 @export var rotation_speed = 1.0
 @export var gravity = 10.0
 @onready var mesh = $Mesh
+@onready var splash_particles = load("res://src/projectiles/particles/SpitImpactParticle.tscn")
 var source: Node3D
 
 
@@ -15,10 +16,9 @@ func _ready():
 	tween.tween_property(self, "scale", Vector3(1.3, 1.3, 1.6), 0.2)
 	tween.tween_property(self, "scale", Vector3.ONE, 2 * (timer.wait_time / 3) - 0.2)
 	tween.tween_property(self, "scale", Vector3.ZERO, timer.time_left)
-	
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	position -= transform.basis.z * 30 * delta
 	var lifetime_ratio = remap(timer.time_left, timer.wait_time, 0, 0, 1)
 	var cubic_gravity = (lifetime_ratio * lifetime_ratio * lifetime_ratio) * -gravity
@@ -31,4 +31,16 @@ func _on_collision_area_body_entered(body: Node3D) -> void:
 		return
 	if body.is_in_group("interactible"):
 		body.interact(-transform.basis.z * 7)
+		
+	var particles = splash_particles.instantiate()
+	get_tree().get_root().add_child(particles)
+	particles.global_transform.origin = self.global_transform.origin
+	particles.finished.connect(
+		func(): particles.queue_free()
+	)
+	particles.emitting = true
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "scale", Vector3.ZERO, 0.1)
+	await tween.finished
 	queue_free()
