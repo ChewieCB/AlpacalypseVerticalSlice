@@ -64,7 +64,7 @@ func _physics_process(delta):
 	handle_gravity(delta)
 	handle_effects()
 	
-	if Input.is_action_pressed("aim") and not anim_tree.get("parameters/kick/active"):
+	if Input.is_action_pressed("aim"):
 		aiming_ui.visible = true
 		# Crane neck and aim spitball towards camera aim postion
 		var bone_pose: Transform3D = skeleton.global_transform * skeleton.get_bone_global_pose(skeleton_index_neck_look)
@@ -86,6 +86,10 @@ func _physics_process(delta):
 			true
 		)
 	elif Input.is_action_just_released("aim"):
+		skeleton.clear_bones_global_pose_override()
+		aiming_ui.visible = false
+	
+	if anim_tree.get("parameters/kick/active"):
 		skeleton.clear_bones_global_pose_override()
 		aiming_ui.visible = false
 		
