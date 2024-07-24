@@ -47,7 +47,6 @@ var coins = 0
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	anim_tree.active = true
-	#anim_state_machine.start("Idle")
 	anim_tree.set("parameters/Transition/current_state", "idle")
 
 func _input(event):
@@ -65,7 +64,7 @@ func _physics_process(delta):
 	handle_gravity(delta)
 	handle_effects()
 	
-	if Input.is_action_pressed("aim"):
+	if Input.is_action_pressed("aim") and not anim_tree.get("parameters/kick/active"):
 		aiming_ui.visible = true
 		# Crane neck and aim spitball towards camera aim postion
 		var bone_pose: Transform3D = skeleton.global_transform * skeleton.get_bone_global_pose(skeleton_index_neck_look)
@@ -89,9 +88,7 @@ func _physics_process(delta):
 	elif Input.is_action_just_released("aim"):
 		skeleton.clear_bones_global_pose_override()
 		aiming_ui.visible = false
-	
-	#var anim_state = anim_state_machine.get_current_node()
-	
+		
 	if Input.is_action_just_pressed("spit"):
 		if not anim_tree.get("parameters/spit/active"):
 			anim_tree.set("parameters/spit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
@@ -188,7 +185,8 @@ func handle_controls(delta):
 			jump_double = false
 			model.scale = Vector3(0.5, 1.5, 0.5)
 			
-		if(jump_single): jump()
+		if jump_single: 
+			jump()
 
 # Handle gravity
 
@@ -224,7 +222,11 @@ func kick():
 	var bodies = kick_collider.get_overlapping_bodies()
 	if bodies: 
 		for body in bodies:
-			body.interact(model.global_transform.basis.z * 10)
+			if body.collision_layer == 1:
+				pass
+				# TODO - wall kick
+			else:
+				body.interact(model.global_transform.basis.z * 10)
 
 
 func spit():
