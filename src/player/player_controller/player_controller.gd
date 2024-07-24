@@ -37,6 +37,7 @@ var coins = 0
 @onready var kick_collider = $Llama/KickArea
 @onready var spitball_scene = preload("res://src/projectiles/spitball/SpitBall.tscn")
 @onready var projectile_spawn = $Llama/rig/Skeleton3D/ProjectileSpawnAttachment/ProjectileSpawn
+@onready var spit_cooldown = $SpitCooldownTimer
 
 @onready var aiming_ui = $UI/AimingUI
 
@@ -88,12 +89,11 @@ func _physics_process(delta):
 		aiming_ui.visible = false
 	
 	if Input.is_action_just_pressed("spit"):
-		if Input.get_vector("move_left", "move_right", "move_forward", "move_back") != Vector2.ZERO:
-			if animation.current_animation != "WalkSpit":
-				anim_state_machine.travel("WalkSpit")
-				anim_tree.set("parameters/WalkSpit/spit_shot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-		else:
-			anim_state_machine.travel("Spit")
+		var anim_state = anim_state_machine.get_current_node()
+		var param_name = "parameters/%s/spit/request" % [anim_state]
+		#if anim_tree.get(param_name):
+		if not anim_tree.get("parameters/%s/spit/active" % [anim_state]):
+			anim_tree.set(param_name, AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	
 	if Input.is_action_just_pressed("kick"):
 		anim_state_machine.travel("Kick")
