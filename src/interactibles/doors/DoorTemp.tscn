@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://brfb6iwadrwre"]
+
+[ext_resource type="Texture2D" uid="uid://bpf2d0jb2o6oa" path="res://assets/placeholder/prototype_textures/orange/texture_06.png" id="2_4a0vn"]
+[ext_resource type="Script" path="res://src/interactibles/doors/door.gd" id="2_lrfum"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oegbu"]
+albedo_texture = ExtResource("2_4a0vn")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_7vqq2"]
+material = SubResource("StandardMaterial3D_oegbu")
+size = Vector3(1, 10, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yvb8m"]
+size = Vector3(1, 10, 10)
+
+[node name="Door" type="AnimatableBody3D"]
+collision_mask = 26
+script = ExtResource("2_lrfum")
+state = "Closed"
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_7vqq2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yvb8m")

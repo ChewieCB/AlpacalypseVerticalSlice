@@ -4,15 +4,11 @@
 [ext_resource type="Material" uid="uid://bwrmg0gstitqy" path="res://assets/placeholder/wall_placeholder.tres" id="2_jv6qt"]
 [ext_resource type="Material" uid="uid://b3gxpt2fclq7u" path="res://assets/placeholder/roof_placeholder.tres" id="3_4ihr2"]
 [ext_resource type="Material" uid="uid://co2qmhhj30maj" path="res://assets/placeholder/grass_placeholder.tres" id="3_cny1f"]
-[ext_resource type="Texture2D" uid="uid://bol00gwmdbxf8" path="res://assets/placeholder/prototype_textures/orange/texture_09.png" id="4_60gxv"]
+[ext_resource type="PackedScene" uid="uid://brfb6iwadrwre" path="res://src/interactibles/doors/DoorTemp.tscn" id="3_kclg2"]
 [ext_resource type="PackedScene" uid="uid://dodx7mrraq275" path="res://src/player/player_controller/PlayerController.tscn" id="6_j3b10"]
 [ext_resource type="PackedScene" uid="uid://4tg3k26hd4dv" path="res://src/collectibles/jewel/jewel.tscn" id="7_qcyop"]
 [ext_resource type="PackedScene" uid="uid://ccdvdcjay8cu7" path="res://src/collectibles/crate/Crate.tscn" id="8_xshtj"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jxyun"]
-albedo_texture = ExtResource("4_60gxv")
-uv1_scale = Vector3(0.25, 0.25, 0.25)
-uv1_triplanar = true
+[ext_resource type="PackedScene" uid="uid://nbktrjbnrmua" path="res://src/interactibles/buttons/Button.tscn" id="9_82xuf"]
 
 [node name="MetricsPlaygroundTest" type="Node3D"]
 
@@ -26,627 +22,963 @@ shadow_enabled = true
 [node name="LevelGeometry" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="Tunnel" type="CSGCombiner3D" parent="LevelGeometry"]
+[node name="SpawnTunnel" type="Node3D" parent="LevelGeometry"]
+metadata/_edit_lock_ = true
+
+[node name="Tunnel" type="CSGCombiner3D" parent="LevelGeometry/SpawnTunnel"]
 operation = 2
 use_collision = true
 
-[node name="Exterior" type="CSGBox3D" parent="LevelGeometry/Tunnel"]
+[node name="Exterior" type="CSGBox3D" parent="LevelGeometry/SpawnTunnel/Tunnel"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.55, -24.5)
 size = Vector3(18, 21, 24)
 material = ExtResource("2_jv6qt")
 
-[node name="InteriorCarve" type="CSGCombiner3D" parent="LevelGeometry/Tunnel"]
+[node name="InteriorCarve" type="CSGCombiner3D" parent="LevelGeometry/SpawnTunnel/Tunnel"]
 transform = Transform3D(1.845, 0, 0, 0, 1.04, 0, 0, 0, 1, 0, 0, -15)
 operation = 2
 
-[node name="Arch" type="CSGCylinder3D" parent="LevelGeometry/Tunnel/InteriorCarve"]
+[node name="Arch" type="CSGCylinder3D" parent="LevelGeometry/SpawnTunnel/Tunnel/InteriorCarve"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5, -9.5)
 radius = 2.0
 height = 25.0
 material = ExtResource("2_jv6qt")
 
-[node name="Box" type="CSGBox3D" parent="LevelGeometry/Tunnel/InteriorCarve"]
+[node name="Box" type="CSGBox3D" parent="LevelGeometry/SpawnTunnel/Tunnel/InteriorCarve"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, -9.5)
 size = Vector3(4, 5, 25)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior6" type="CSGBox3D" parent="LevelGeometry"]
+[node name="TunnelEnd" type="CSGBox3D" parent="LevelGeometry/SpawnTunnel"]
+transform = Transform3D(0.996195, 0, -0.087156, 0, 1, 0, 0.087156, 0, 0.996195, -1.26925, 4.55, -16.1626)
+use_collision = true
+size = Vector3(16, 9, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="BalconyDoor" parent="LevelGeometry" instance=ExtResource("3_kclg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.008, 17, -73.506)
+
+[node name="BalconyDoor2" parent="LevelGeometry" instance=ExtResource("3_kclg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.209, 17, -73.506)
+
+[node name="GazeboArea" type="Node3D" parent="LevelGeometry"]
+metadata/_edit_lock_ = true
+
+[node name="Exterior6" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871558, -7.41044, 0.550001, -105.577)
 use_collision = true
 size = Vector3(5, 1, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior7" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior7" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871558, -2.42946, 1.05, -105.141)
 use_collision = true
 size = Vector3(5, 2, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior8" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior8" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871558, 2.55151, 1.55, -104.706)
 use_collision = true
 size = Vector3(5, 3, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior9" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior9" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871558, 7.53248, 2.55, -104.27)
 use_collision = true
 size = Vector3(5, 5, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="BalconyFloor" type="CSGCombiner3D" parent="LevelGeometry"]
+[node name="BalconyFloor" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(4.5817e-06, 0.00129657, -0.999999, -0.000353489, 0.999999, 0.00129657, 1, 0.000353483, 5.03547e-06, -25.039, 14.858, -74.6235)
 operation = 2
 use_collision = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/BalconyFloor"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/GazeboArea/BalconyFloor"]
 transform = Transform3D(1, 0, -6.09361e-11, 0, 1, 3.37017e-11, -6.09361e-11, -1.55643e-08, 1, 0.900284, -3.38489, -4.50114)
 size = Vector3(8, 1, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/BalconyFloor"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/GazeboArea/BalconyFloor"]
 transform = Transform3D(0.866025, 0.000600939, -0.5, -0.00069564, 1, -3.03719e-06, 0.499999, 0.000350432, 0.866028, -3.7993, -3.28429, -6.2015)
 operation = 2
 size = Vector3(4, 2, 4)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeometry/BalconyFloor"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeometry/GazeboArea/BalconyFloor"]
 transform = Transform3D(0.866025, -0.000695657, 0.500002, 0.000600932, 1, 0.000350455, -0.5, -3.05763e-06, 0.866027, 5.6007, -3.28097, -6.20145)
 operation = 2
 size = Vector3(4, 2, 4)
 material = ExtResource("2_jv6qt")
 
-[node name="BalconyFloor2" type="CSGCombiner3D" parent="LevelGeometry"]
+[node name="BalconyFloor2" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.922027, 0.000827861, -0.387124, -0.000353489, 0.999999, 0.00129657, 0.387125, -0.00105863, 0.922027, 5.85884, 13.5602, -77.6659)
 operation = 2
 use_collision = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/BalconyFloor2"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/GazeboArea/BalconyFloor2"]
 transform = Transform3D(1, 0, -6.09361e-11, 0, 1, 3.37017e-11, -6.09361e-11, -1.55643e-08, 1, 0.900284, -3.38489, -4.50114)
 size = Vector3(8, 1, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/BalconyFloor2"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/GazeboArea/BalconyFloor2"]
 transform = Transform3D(0.866025, 0.000600939, -0.5, -0.00069564, 1, -3.03719e-06, 0.499999, 0.000350432, 0.866028, -3.7993, -3.28429, -6.2015)
 operation = 2
 size = Vector3(4, 2, 4)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeometry/BalconyFloor2"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeometry/GazeboArea/BalconyFloor2"]
 transform = Transform3D(0.866025, -0.000695657, 0.500002, 0.000600932, 1, 0.000350455, -0.5, -3.05763e-06, 0.866027, 5.6007, -3.28097, -6.20145)
 operation = 2
 size = Vector3(4, 2, 4)
 material = ExtResource("2_jv6qt")
 
-[node name="WallBalcony" type="CSGCombiner3D" parent="LevelGeometry"]
+[node name="WallBalcony" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(4.5817e-06, 0.00129657, -0.999999, -0.000353489, 0.999999, 0.00129657, 1, 0.000353483, 5.03547e-06, -25.039, 14.858, -74.6235)
 operation = 2
 use_collision = true
 
-[node name="Exterior10" type="CSGBox3D" parent="LevelGeometry/WallBalcony"]
+[node name="Exterior10" type="CSGBox3D" parent="LevelGeometry/GazeboArea/WallBalcony"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 3.37232e-11, -4.54747e-13, -8.10828e-11, 1, 0, 0, 0)
 use_collision = true
 size = Vector3(27, 30, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="BalconyHole" type="CSGCombiner3D" parent="LevelGeometry/WallBalcony"]
+[node name="BalconyHole" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/WallBalcony"]
 transform = Transform3D(1, 0, -1.81899e-12, 0, 1, 3.37228e-11, -1.81899e-12, -4.30329e-10, 1, 0.902435, -6.89006, -0.00893021)
 operation = 2
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/WallBalcony/BalconyHole"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/WallBalcony/BalconyHole"]
 transform = Transform3D(1, 0, -4.54747e-13, 0, 1, 3.37232e-11, -4.54747e-13, -8.10828e-11, 1, -0.00247955, 6.99999, 0.00907707)
 size = Vector3(8, 6, 8)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/WallBalcony/BalconyHole"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/GazeboArea/WallBalcony/BalconyHole"]
 transform = Transform3D(1, 0.000348448, 0.000358519, 0.000358519, 8.12946e-08, -1, -0.000348448, 1, -4.36304e-08, -0.00354004, 9.99999, 0.0129662)
 radius = 4.0
 height = 6.0
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior11" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior11" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 19.1797, 7.55, -37.5753)
 use_collision = true
 size = Vector3(22, 15, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior14" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior14" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 30.6213, 7.55, -46.3555)
 use_collision = true
 size = Vector3(15, 15, 5)
 material = ExtResource("2_jv6qt")
 metadata/_edit_lock_ = true
 
-[node name="Exterior16" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior16" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, 38.786, 9.95, -62.7022)
 use_collision = true
 size = Vector3(24, 20, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior24" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior24" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -28.8199, 12.95, -98.0215)
 use_collision = true
 size = Vector3(17, 26, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior17" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior17" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 39.2095, 16.45, -78.3896)
 use_collision = true
 size = Vector3(13, 33.2, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior23" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior23" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, -17.7905, 12.85, -106.39)
 use_collision = true
 size = Vector3(13, 26, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior25" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior25" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -31.8847, 12.85, -92.7703)
 use_collision = true
 size = Vector3(6, 26, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior26" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior26" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -32.4964, 12.85, -56.3215)
 use_collision = true
 size = Vector3(9, 26, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior18" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior18" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 32.2565, 16.55, -95.4852)
 use_collision = true
 size = Vector3(25, 33, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior21" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior21" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 17.2565, 16.55, -106.985)
 use_collision = true
 size = Vector3(25, 33, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior22" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior22" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(1, 0, 4.47035e-08, 0, 1, 0, -4.47035e-08, 0, 1, -5.84345, 16.55, -109.085)
 use_collision = true
 size = Vector3(25, 33, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior15" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior15" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.34202, 0, 0.939693, 0, 1, 0, -0.939693, 0, -0.34202, -32.7396, 9.55, -49.1269)
 use_collision = true
 size = Vector3(6, 20, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior19" type="CSGBox3D" parent="LevelGeometry"]
-transform = Transform3D(0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, -31.2787, 14.85, -61.3555)
+[node name="Exterior19" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
+transform = Transform3D(0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, -30.7657, 14.85, -59.946)
 use_collision = true
-size = Vector3(15, 30, 5)
+size = Vector3(15, 30, 2)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior20" type="CSGBox3D" parent="LevelGeometry"]
-transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -31.2787, 14.85, -88.3555)
+[node name="Exterior20" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
+transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -30.6448, 14.85, -89.715)
 use_collision = true
-size = Vector3(15, 30, 5)
+size = Vector3(15, 30, 2)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.906307, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906307, -14.0333, 28.85, -27.3809)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.996194, 0, -0.0871558, 0, 1, 0, 0.0871558, 0, 0.996194, -0.565355, 28.85, -23.9044)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior30" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior30" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.939692, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939692, 14.3387, 28.85, -26.3083)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior31" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior31" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.906308, 0, 0.422618, 0, 1, 0, -0.422618, 0, 0.906308, 28.4444, 28.85, -32.0261)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior32" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior32" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, 39.7851, 28.85, -42.4656)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior33" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior33" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.173648, 0, 0.984807, 0, 1, 0, -0.984807, 0, 0.173648, 45.6833, 28.85, -53.4909)
 use_collision = true
 size = Vector3(9.8, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -26.754, 28.85, -33.3849)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior34" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior34" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.573576, -37.3535, 28.85, -43.7113)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior35" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior35" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -42.4525, 28.85, -53.2811)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior39" type="CSGBox3D" parent="LevelGeometry"]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -40.4525, 28.85, -77.781)
+[node name="Exterior39" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -40.4525, 38.85, -77.781)
 use_collision = true
-size = Vector3(34, 30, 16)
+size = Vector3(34, 10, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior40" type="CSGBox3D" parent="LevelGeometry"]
-transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -28.9525, 28.85, -75.281)
+[node name="Exterior40" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -28.9525, 38.85, -75.281)
 use_collision = true
-size = Vector3(23, 30, 7)
+size = Vector3(23, 10, 7)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior36" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior43" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
+transform = Transform3D(-5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, -26.2025, 31.85, -75.281)
+use_collision = true
+size = Vector3(23, 4, 1.5)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior41" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
+transform = Transform3D(0.34202, 0, -0.939693, 0, 1, 0, 0.939693, 0, 0.34202, -30.4771, 36.35, -62.7683)
+use_collision = true
+size = Vector3(3.2, 15, 10.1)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior42" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
+transform = Transform3D(-0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, -0.422618, -29.6617, 36.35, -87.0052)
+use_collision = true
+size = Vector3(3.2, 15, 7.8)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior36" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, -0.766044, -24.3376, 28.85, -110.786)
 use_collision = true
 size = Vector3(15, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior37" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior37" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.642787, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642787, -36.515, 28.85, -101.025)
 use_collision = true
 size = Vector3(24, 30, 16)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="LevelGeometry"]
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.0871558, 0, -0.996195, 0, 1, 0, 0.996195, 0, 0.0871558, 32.0903, 3.55, -74.0508)
 use_collision = true
 
-[node name="Exterior15" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D3"]
+[node name="Exterior15" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D3"]
 transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 6.56665, -0.5, 0.363808)
 use_collision = true
 size = Vector3(10.7, 6, 16.2)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior16" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D3"]
+[node name="Exterior16" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D3"]
 use_collision = true
 size = Vector3(10.7, 7, 11)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior18" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D3"]
+[node name="Exterior18" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D3"]
 transform = Transform3D(0.500001, 0, 0.866027, 0, 1, 0, -0.866027, 0, 0.500001, -24.5522, 1.5, 11.5551)
 use_collision = true
 size = Vector3(24, 10, 10.3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior17" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D3"]
+[node name="Exterior17" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D3"]
 transform = Transform3D(0.951256, 0.167731, 0.258819, -0.173649, 0.984808, 3.72529e-09, -0.254887, -0.0449432, 0.965931, -12.6701, 4.4, 1.94522)
 use_collision = true
 size = Vector3(17.8, 0.6, 4)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior14" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D3"]
+[node name="Exterior14" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D3"]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, 17.809, -1.5, 0.182)
 use_collision = true
 size = Vector3(13, 4, 11)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior19" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D3"]
+[node name="Exterior19" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D3"]
 transform = Transform3D(0.173649, 0, -0.984814, 0, 1, 0, 0.984814, 0, 0.173649, 23.2596, -2.5, 7.77729)
 use_collision = true
 size = Vector3(6, 2, 7.3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior12" type="CSGBox3D" parent="LevelGeometry"]
+[node name="Exterior12" type="CSGBox3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -20.606, 7.55, -40.3735)
 use_collision = true
 size = Vector3(28, 15, 5)
 material = ExtResource("2_jv6qt")
 
-[node name="Building1" type="Node3D" parent="LevelGeometry"]
+[node name="Building1" type="Node3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -21.039, 7.55, -40.6235)
 
-[node name="BuildingRoof1" type="CSGCombiner3D" parent="LevelGeometry/Building1"]
+[node name="BuildingRoof1" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Building1"]
 use_collision = true
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/Building1/BuildingRoof1"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/GazeboArea/Building1/BuildingRoof1"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 11.5622, 0, 6.02628)
 radius = 10.0
 material = ExtResource("3_4ihr2")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Building1/BuildingRoof1"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building1/BuildingRoof1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6962, -4, 6.25834)
 operation = 2
+flip_faces = true
 size = Vector3(31, 13, 21)
 material = ExtResource("3_4ihr2")
 
-[node name="BuildingWalls" type="CSGCombiner3D" parent="LevelGeometry/Building1"]
+[node name="BuildingWalls" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Building1"]
 use_collision = true
 
-[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry/Building1/BuildingWalls"]
+[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building1/BuildingWalls"]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 3.27276, -2.5, 6.44615)
 use_collision = true
 size = Vector3(10, 10, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry/Building1/BuildingWalls"]
+[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building1/BuildingWalls"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 6.30854, -2.5, 12.7396)
 use_collision = true
 size = Vector3(6, 10, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry/Building1/BuildingWalls"]
+[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building1/BuildingWalls"]
 transform = Transform3D(-0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, -0.996195, 11.9858, -2.5, 14.8006)
 use_collision = true
 size = Vector3(9, 10, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Building2" type="Node3D" parent="LevelGeometry"]
+[node name="Building2" type="Node3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, 10.261, 19.55, -109.623)
 
-[node name="BuildingRoof1" type="CSGCombiner3D" parent="LevelGeometry/Building2"]
+[node name="BuildingRoof1" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Building2"]
 use_collision = true
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/Building2/BuildingRoof1"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/GazeboArea/Building2/BuildingRoof1"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 11.5622, 0, 6.02628)
 radius = 10.0
 material = ExtResource("3_4ihr2")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Building2/BuildingRoof1"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building2/BuildingRoof1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6962, -4, 6.25834)
 operation = 2
 size = Vector3(31, 13, 21)
 material = ExtResource("3_4ihr2")
 
-[node name="BuildingWalls" type="CSGCombiner3D" parent="LevelGeometry/Building2"]
+[node name="BuildingWalls" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Building2"]
 use_collision = true
 
-[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry/Building2/BuildingWalls"]
+[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building2/BuildingWalls"]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 3.27276, -3.5, 6.44615)
 use_collision = true
 size = Vector3(10, 12, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry/Building2/BuildingWalls"]
+[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building2/BuildingWalls"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 6.30855, -3.5, 12.7396)
 use_collision = true
 size = Vector3(6, 12, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry/Building2/BuildingWalls"]
+[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building2/BuildingWalls"]
 transform = Transform3D(-0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, -0.996195, 11.9858, -3.5, 14.8006)
 use_collision = true
 size = Vector3(9, 12, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Building3" type="Node3D" parent="LevelGeometry"]
+[node name="Building3" type="Node3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 37.661, 28.55, -81.6235)
 
-[node name="BuildingRoof1" type="CSGCombiner3D" parent="LevelGeometry/Building3"]
+[node name="BuildingRoof1" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Building3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 use_collision = true
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/Building3/BuildingRoof1"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/GazeboArea/Building3/BuildingRoof1"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 11.5622, 0, 6.02628)
 radius = 10.0
 material = ExtResource("3_4ihr2")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingRoof1"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingRoof1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6962, -4, 6.25834)
 operation = 2
 size = Vector3(31, 13, 21)
 material = ExtResource("3_4ihr2")
 
-[node name="BuildingWalls" type="CSGCombiner3D" parent="LevelGeometry/Building3"]
+[node name="BuildingWalls" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Building3"]
 use_collision = true
 
-[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingWalls"]
+[node name="Exterior27" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingWalls"]
 transform = Transform3D(-0.258819, 0, 0.965927, 0, 1, 0, -0.965927, 0, -0.258819, 3.79041, -11, 8.37801)
 use_collision = true
 size = Vector3(6, 35, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior30" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingWalls"]
+[node name="Exterior30" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingWalls"]
 transform = Transform3D(0.258819, 0, 0.965927, 0, 1, 0, -0.965927, 0, 0.258819, 3.58286, -11, 3.35704)
 use_collision = true
 size = Vector3(6, 35, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior31" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingWalls"]
+[node name="Exterior31" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingWalls"]
 transform = Transform3D(0.707108, 0, 0.707108, 0, 1, 0, -0.707108, 0, 0.707108, 6.04808, -11, -0.951735)
 use_collision = true
 size = Vector3(6, 35, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior32" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingWalls"]
+[node name="Exterior32" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingWalls"]
 transform = Transform3D(0.965927, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965927, 13.8055, -11, 14.075)
 use_collision = true
 size = Vector3(6, 35, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior33" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingWalls"]
+[node name="Exterior33" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingWalls"]
 transform = Transform3D(0.707108, 0, 0.707108, 0, 1, 0, -0.707108, 0, 0.707108, 18.1433, -11, 11.6527)
 use_collision = true
 size = Vector3(6, 35, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingWalls"]
+[node name="Exterior28" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingWalls"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 6.30856, -11, 12.7396)
 use_collision = true
 size = Vector3(6, 35, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry/Building3/BuildingWalls"]
+[node name="Exterior29" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Building3/BuildingWalls"]
 transform = Transform3D(-0.996195, 0, 0.0871557, 0, 1, 0, -0.0871557, 0, -0.996195, 9.49535, -11, 14.5827)
 use_collision = true
 size = Vector3(4, 35, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="Exterior2" type="CSGBox3D" parent="LevelGeometry"]
-transform = Transform3D(0.996195, 0, -0.087156, 0, 1, 0, 0.087156, 0, 0.996195, -1.26925, 4.55, -16.1626)
-use_collision = true
-size = Vector3(16, 9, 4)
-material = ExtResource("2_jv6qt")
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelGeometry"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea"]
 use_collision = true
 
-[node name="Floor2" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+[node name="Floor2" type="CSGCylinder3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -72)
 use_collision = true
 radius = 40.0
 height = 0.1
 material = ExtResource("3_cny1f")
 
-[node name="Floor3" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D"]
+[node name="Floor3" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, -30.95)
 size = Vector3(8.1, 0.1, 9.9)
 material = ExtResource("3_cny1f")
 
-[node name="Temple" type="Node3D" parent="LevelGeometry"]
+[node name="Temple" type="Node3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.73524, 7.55, -70.9601)
 
-[node name="TempleRoof" type="CSGCombiner3D" parent="LevelGeometry/Temple"]
+[node name="TempleRoof" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Temple"]
 operation = 2
 use_collision = true
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/Temple/TempleRoof"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/GazeboArea/Temple/TempleRoof"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)
 radius = 10.0
 radial_segments = 8
 material = ExtResource("3_4ihr2")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Temple/TempleRoof"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleRoof"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.5, 0)
 operation = 2
 size = Vector3(20, 10, 20)
 material = ExtResource("3_4ihr2")
 
-[node name="TempleRooftrim" type="CSGCombiner3D" parent="LevelGeometry/Temple"]
+[node name="TempleRooftrim" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Temple"]
 operation = 2
 use_collision = true
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/Temple/TempleRooftrim"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/GazeboArea/Temple/TempleRooftrim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)
 radius = 12.0
 radial_segments = 8
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Temple/TempleRooftrim"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleRooftrim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.5, 0)
 operation = 2
 size = Vector3(24, 12, 24)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/Temple/TempleRooftrim"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleRooftrim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 operation = 2
 size = Vector3(24, 11, 24)
 material = ExtResource("2_jv6qt")
 
-[node name="TempleBaseTrim" type="CSGCombiner3D" parent="LevelGeometry/Temple"]
+[node name="TempleBaseTrim" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Temple"]
 transform = Transform3D(1.25, 0, 0, 0, 1, 0, 0, 0, 1.25, 0, 0, 0)
 operation = 2
 use_collision = true
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/Temple/TempleBaseTrim"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/GazeboArea/Temple/TempleBaseTrim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.1, 0)
 radius = 12.0
 radial_segments = 8
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Temple/TempleBaseTrim"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleBaseTrim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.6, 0)
 operation = 2
 size = Vector3(24, 12, 24)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/Temple/TempleBaseTrim"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleBaseTrim"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.100001, 0)
 operation = 2
 size = Vector3(24, 11, 24)
 material = ExtResource("2_jv6qt")
 
-[node name="TempleInner" type="CSGCombiner3D" parent="LevelGeometry/Temple"]
+[node name="TempleInner" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Temple"]
 operation = 2
 use_collision = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/Temple/TempleInner"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/GazeboArea/Temple/TempleInner"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
 radius = 10.0
 height = 30.0
 material = ExtResource("2_jv6qt")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelGeometry/Temple/TempleInner"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea/Temple/TempleInner"]
 transform = Transform3D(1, 0, 0, 0, 2.91, 0, 0, 0, 1, 0, 11, 0)
 operation = 2
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/Temple/TempleInner/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleInner/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 5.5)
 size = Vector3(9, 5, 9)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/Temple/TempleInner/CSGCombiner3D"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleInner/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 5.5)
 size = Vector3(9, 5, 9)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/Temple/TempleInner/CSGCombiner3D"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleInner/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, -5.5)
 size = Vector3(9, 5, 9)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeometry/Temple/TempleInner/CSGCombiner3D"]
+[node name="CSGBox3D4" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleInner/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, -5.5)
 size = Vector3(9, 5, 9)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeometry/Temple/TempleInner/CSGCombiner3D"]
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeometry/GazeboArea/Temple/TempleInner/CSGCombiner3D"]
 size = Vector3(17, 5, 17)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 17, -74)
-use_collision = true
-size = Vector3(1, 11, 9)
-material = SubResource("StandardMaterial3D_jxyun")
-
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="LevelGeometry"]
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="LevelGeometry/GazeboArea"]
 transform = Transform3D(0.573576, 0, 0.819152, 0, 1, 0, -0.819152, 0, 0.573576, -21.1, 9, -98)
 use_collision = true
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D2"]
 use_collision = true
 radius = 10.0
 sides = 6
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D2"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D2"]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -7.54827, 0, 1.02476)
 size = Vector3(7.2, 2, 14.5)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D2"]
 transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 7.32676, -5, 1.54199)
 size = Vector3(3, 8, 3)
 material = ExtResource("2_jv6qt")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/CSGCombiner3D2"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="LevelGeometry/GazeboArea/CSGCombiner3D2"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -6.95148, -5, 4.56794)
 size = Vector3(3, 8, 3)
 material = ExtResource("2_jv6qt")
 
+[node name="InsideTemple" type="Node3D" parent="LevelGeometry"]
+metadata/_edit_lock_ = true
+
+[node name="Room1" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple"]
+use_collision = true
+
+[node name="RoofEnd1" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+
+[node name="RoofShell" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1"]
+
+[node name="Roof" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1/RoofShell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 26, -74)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1/RoofShell/Roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.32, 3.8147e-06, -1.1, 0.363998)
+radius = 10.0
+radial_segments = 6
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1/RoofShell/Roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.32, 0.5, -5.5, -0.0319977)
+operation = 2
+size = Vector3(20, 12, 21)
+material = ExtResource("2_jv6qt")
+
+[node name="RoofInner" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1/RoofShell"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1.188, -35, 26, -74.032)
+operation = 2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1/RoofShell/RoofInner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-06, -1.1, 0.299995)
+radius = 10.0
+radial_segments = 6
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1/RoofShell/RoofInner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -5.5, 0)
+operation = 2
+size = Vector3(20, 12, 21)
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd1"]
+transform = Transform3D(-2.7, 0, 0, 0, 1, 0, 0, 0, -5.1, -42.16, 28.95, -73.705)
+operation = 2
+size = Vector3(6, 16.7, 5.1)
+
+[node name="RoofEnd2" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.075, 0, 0)
+
+[node name="RoofShell" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2"]
+
+[node name="Roof" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2/RoofShell"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 26, -74)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2/RoofShell/Roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.32, 3.8147e-06, -1.1, 0.363998)
+radius = 10.0
+radial_segments = 6
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2/RoofShell/Roof"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.32, 0.5, -5.5, -0.0319977)
+operation = 2
+size = Vector3(20, 12, 21)
+material = ExtResource("2_jv6qt")
+
+[node name="RoofInner" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2/RoofShell"]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 1.188, -35, 26, -74.032)
+operation = 2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2/RoofShell/RoofInner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8147e-06, -1.1, 0.299995)
+radius = 10.0
+radial_segments = 6
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2/RoofShell/RoofInner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -5.5, 0)
+operation = 2
+size = Vector3(20, 12, 21)
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofEnd2"]
+transform = Transform3D(-2.7, 0, 0, 0, 1, 0, 0, 0, -5.1, -26.86, 28.95, -73.705)
+operation = 2
+size = Vector3(6, 16.7, 5.1)
+
+[node name="RoofMidWall" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(1, 0, 0, 0, 0.98, 0, 0, 0, 1, -16.053, 0.7, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.025, 0, 0)
+
+[node name="RoofMid1" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall/CSGCombiner3D"]
+transform = Transform3D(33.11, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, -34.6, 27.9334, -84.4799)
+size = Vector3(1, 3.80249, 1.16541)
+material = ExtResource("2_jv6qt")
+
+[node name="RoofMid2" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall/CSGCombiner3D"]
+transform = Transform3D(33.11, 0, 0, 0, 0.599722, -0.800208, 0, 0.800208, 0.599722, -34.6, 31.4286, -81.6669)
+size = Vector3(1, 6.20642, 1.16541)
+material = ExtResource("2_jv6qt")
+
+[node name="RoofMid3" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall/CSGCombiner3D"]
+transform = Transform3D(33.11, 0, 0, 0, 0.194166, -0.980969, 0, 0.980969, 0.194166, -34.6, 33.7759, -76.9108)
+size = Vector3(1, 5.25848, 1.16541)
+material = ExtResource("2_jv6qt")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -69.17, 0.025, -147.41)
+
+[node name="RoofMid1" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall/CSGCombiner3D2"]
+transform = Transform3D(33.11, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, -34.6, 27.9334, -84.4799)
+size = Vector3(1, 3.80249, 1.16541)
+material = ExtResource("2_jv6qt")
+
+[node name="RoofMid2" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall/CSGCombiner3D2"]
+transform = Transform3D(33.11, 0, 0, 0, 0.599722, -0.800208, 0, 0.800208, 0.599722, -34.6, 31.4286, -81.6669)
+size = Vector3(1, 6.20642, 1.16541)
+material = ExtResource("2_jv6qt")
+
+[node name="RoofMid3" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall/CSGCombiner3D2"]
+transform = Transform3D(33.11, 0, 0, 0, 0.194166, -0.980969, 0, 0.980969, 0.194166, -34.6, 33.7759, -76.9108)
+size = Vector3(1, 5.25848, 1.16541)
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/RoofMidWall"]
+transform = Transform3D(33.11, 0, 0, 0, 1, 0, 0, 0, 1, -34.3451, 34.2823, -73.7813)
+size = Vector3(1.01367, 1.13574, 1.58282)
+material = ExtResource("2_jv6qt")
+
+[node name="TempleFloor" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+use_collision = true
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/TempleFloor"]
+transform = Transform3D(4.58176e-06, 0.00129659, -0.999999, -0.000353489, 0.999999, 0.00129657, 1, 0.000353483, 5.03541e-06, -51.3922, 11.4946, -73.7243)
+size = Vector3(22, 1, 47.7)
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/TempleFloor"]
+transform = Transform3D(0.70711, 0.00116677, -0.707102, -0.000353489, 0.999999, 0.00129657, 0.707104, -0.000666874, 0.70711, -27.8801, 11.4616, -84.1543)
+operation = 2
+size = Vector3(10.5, 1.2, 8)
+material = ExtResource("2_jv6qt")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/TempleFloor"]
+transform = Transform3D(-0.707104, 0.000666874, -0.70711, -0.000353489, 0.999999, 0.00129657, 0.70711, 0.00116677, -0.707103, -27.8094, 11.4614, -63.3715)
+operation = 2
+size = Vector3(10.3, 1.2, 8)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior20" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(1, 0, 3.27826e-07, 0, 1, 0, -3.27826e-07, 0, 1, -50.0448, 20.85, -85.715)
+use_collision = true
+size = Vector3(32, 18, 2)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior21" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(1, 0, 3.27826e-07, 0, 1, 0, -3.27826e-07, 0, 1, -50.0448, 20.85, -61.715)
+use_collision = true
+size = Vector3(32, 18, 2)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior22" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, -30.1352, 20.85, -65.2746)
+use_collision = true
+size = Vector3(9.8, 18, 2)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior23" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -30.1352, 20.85, -82.1746)
+use_collision = true
+size = Vector3(9.8, 18, 2)
+material = ExtResource("2_jv6qt")
+
+[node name="Pillar1" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -41, -2.31, -64)
+
+[node name="Exterior24" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar1"]
+transform = Transform3D(1, 0, 3.27826e-07, 0, 1, 0, -3.27826e-07, 0, 1, -0.0447769, 20.85, -0.114951)
+use_collision = true
+size = Vector3(4, 18, 3)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior25" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar1"]
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, 2.777, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior26" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar1"]
+transform = Transform3D(-0.707107, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707107, -2.723, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Pillar2" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -59, -2.31, -64)
+
+[node name="Exterior24" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar2"]
+transform = Transform3D(1, 0, 3.27826e-07, 0, 1, 0, -3.27826e-07, 0, 1, -0.0447769, 20.85, -0.114951)
+use_collision = true
+size = Vector3(4, 18, 3)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior25" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar2"]
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, 2.777, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior26" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar2"]
+transform = Transform3D(-0.707107, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707107, -2.723, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Pillar3" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(-1.2, 0, 1.81195e-07, 0, 1.2, 0, -1.81195e-07, 0, -1.2, -59, -2.31, -84)
+
+[node name="Exterior24" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar3"]
+transform = Transform3D(1, 0, 3.27826e-07, 0, 1, 0, -3.27826e-07, 0, 1, -0.0447769, 20.85, -0.114951)
+use_collision = true
+size = Vector3(4, 18, 3)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior25" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar3"]
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, 2.777, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior26" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar3"]
+transform = Transform3D(-0.707107, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707107, -2.723, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Pillar4" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(-1.2, 0, 1.81195e-07, 0, 1.2, 0, -1.81195e-07, 0, -1.2, -41, -2.31, -84)
+
+[node name="Exterior24" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar4"]
+transform = Transform3D(1, 0, 3.27826e-07, 0, 1, 0, -3.27826e-07, 0, 1, -0.0447769, 20.85, -0.114951)
+use_collision = true
+size = Vector3(4, 18, 3)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior25" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar4"]
+transform = Transform3D(0.707106, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707106, 2.777, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior26" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/Pillar4"]
+transform = Transform3D(-0.707107, 0, 0.707106, 0, 1, 0, -0.707106, 0, -0.707107, -2.723, 21.35, -2.636)
+operation = 2
+use_collision = true
+size = Vector3(4, 19, 4)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior24" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(0.79671, 0, -0.604362, 0, 1, 0, 0.604362, 0, 0.79671, -70.2986, 20.85, -64.6509)
+use_collision = true
+size = Vector3(10.1, 18, 2)
+material = ExtResource("2_jv6qt")
+
+[node name="Exterior25" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(0.791906, 0, 0.610643, 0, 1, 0, -0.610643, 0, 0.791906, -69.7626, 20.85, -82.8897)
+use_collision = true
+size = Vector3(11, 18, 2)
+material = ExtResource("2_jv6qt")
+
+[node name="WallBalcony" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1"]
+transform = Transform3D(4.5817e-06, 0.00129657, -0.999999, -0.000353489, 0.999999, 0.00129657, 1, 0.000353483, 5.03547e-06, -91.0389, 14.9436, -74.6232)
+use_collision = true
+
+[node name="Exterior10" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/WallBalcony"]
+transform = Transform3D(1, 0, -3.18323e-12, 0, 1, -6.36912e-09, 2.45564e-11, -8.10838e-11, 1, 1.2, 5.84999, -16.8)
+use_collision = true
+size = Vector3(12.2, 18.3, 2)
+material = ExtResource("2_jv6qt")
+
+[node name="BalconyHole" type="CSGCombiner3D" parent="LevelGeometry/InsideTemple/Room1/WallBalcony"]
+transform = Transform3D(1, 0, -1.81899e-12, 0, 1, 3.37228e-11, -1.81899e-12, -4.30329e-10, 1, 0.902435, -6.89006, -16.6089)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelGeometry/InsideTemple/Room1/WallBalcony/BalconyHole"]
+transform = Transform3D(1, 0, -9.09495e-13, 0, 1, -1.36326e-09, 5.00222e-12, -8.1083e-11, 1, -0.00247192, 6.09999, 0.00907898)
+size = Vector3(8, 7.8, 8)
+material = ExtResource("2_jv6qt")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/InsideTemple/Room1/WallBalcony/BalconyHole"]
+transform = Transform3D(1, 0.000348448, 0.000358519, 0.000358519, 8.12946e-08, -1, -0.000348448, 1, -4.36304e-08, -0.00354004, 9.99999, 0.0129662)
+radius = 4.0
+height = 6.0
+material = ExtResource("2_jv6qt")
+
+[node name="Door" parent="LevelGeometry" instance=ExtResource("3_kclg2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 5, -35)
+
+[node name="Button1" parent="LevelGeometry/Door" node_paths=PackedStringArray("target") instance=ExtResource("9_82xuf")]
+transform = Transform3D(-8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 0, 2, 0.5, -1.4, 0)
+target = NodePath("..")
+
 [node name="PlayerController" parent="." instance=ExtResource("6_j3b10")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, -21.5272)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -20)
 movement_speed = 500
 jump_strength = 11
 
@@ -654,135 +986,155 @@ jump_strength = 11
 
 [node name="Jewel1" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.05, -41)
-gem_color_str = "BLACK"
-gem_shape_str = "ROUND"
+gem_color_str = "ORANGE"
+gem_shape_str = "CHUNK"
 
 [node name="Jewel2" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 1.05, -42)
-gem_color_str = "PEARL"
+gem_color_str = "YELLOW"
 gem_shape_str = "TRIANGLE"
 
 [node name="Jewel3" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26, 3.05, -49)
-gem_color_str = "BLUE"
-gem_shape_str = "CHUNK"
+gem_color_str = "RED"
+gem_shape_str = "ROUND"
 
 [node name="Jewel4" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 30, 5.05, -54)
-gem_color_str = "BLUE"
-gem_shape_str = "BROOCH"
+gem_color_str = "GREEN"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel5" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 31.3408, 5.05, -59.1592)
-gem_color_str = "PEARL"
-gem_shape_str = "ROUND"
+gem_color_str = "ORANGE"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel6" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 29.8559, 8.05, -72.2406)
-gem_color_str = "PINK"
-gem_shape_str = "CHUNK"
+gem_color_str = "RED"
+gem_shape_str = "DIAMOND"
 
 [node name="Jewel7" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 31.7184, 8.05, -76.8808)
 gem_color_str = "GREEN"
-gem_shape_str = "TRIANGLE"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel8" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 28.1634, 8.05, -76.2388)
-gem_color_str = "YELLOW"
-gem_shape_str = "ROUND"
+gem_color_str = "VIOLET"
+gem_shape_str = "TRAPEZIUM"
 
 [node name="Jewel9" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.34202, 0, -0.939692, 0, 1, 0, 0.939692, 0, -0.34202, 29.4216, 8.83086, -84.0815)
-gem_color_str = "VIOLET"
+gem_color_str = "RED"
 gem_shape_str = "ROUND"
 
 [node name="Jewel10" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 25.2379, 11.05, -93.0535)
-gem_color_str = "BLACK"
-gem_shape_str = "TRIANGLE"
+gem_color_str = "ORANGE"
+gem_shape_str = "CHUNK"
 
 [node name="Jewel11" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.766044, 0, 0.642788, 0, 1, 0, -0.642788, 0, 0.766044, 19.3527, 11.05, -95.0445)
-gem_color_str = "PEARL"
-gem_shape_str = "ROUND"
+gem_color_str = "RED"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel12" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.422618, 0, -0.906308, 0, 1, 0, 0.906308, 0, 0.422618, 14.5943, 11.05, -97.4483)
-gem_color_str = "VIOLET"
-gem_shape_str = "CHUNK"
+gem_color_str = "YELLOW"
+gem_shape_str = "DIAMOND"
 
 [node name="Jewel20" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 6.8361, 12.275, -78.6103)
-gem_color_str = "PEARL"
-gem_shape_str = "CHUNK"
+gem_shape_str = "ROUND"
 
 [node name="Jewel21" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, 1.75198, 12.275, -78.9131)
-gem_color_str = "VIOLET"
-gem_shape_str = "BROOCH"
+gem_color_str = "BLUE"
+gem_shape_str = "ROUND"
 
 [node name="Jewel22" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 1.88921, 12.275, -64.2898)
-gem_color_str = "YELLOW"
-gem_shape_str = "ROUND"
+gem_color_str = "BLACK"
+gem_shape_str = "TRAPEZIUM"
 
 [node name="Jewel23" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.34202, 0, 0.939692, 0, 1, 0, -0.939692, 0, 0.34202, 11.2115, 12.275, -68.5588)
 gem_color_str = "SKY"
-gem_shape_str = "CHUNK"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel24" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, 0.996195, 11.2837, 12.275, -73.9731)
-gem_color_str = "YELLOW"
-gem_shape_str = "TRIANGLE"
+gem_color_str = "SKY"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel25" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.0871556, 0, -0.996195, 0, 1, 0, 0.996195, 0, -0.0871556, -2.8025, 12.275, -73.5994)
-gem_color_str = "PEARL"
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "ORANGE"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel28" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-1, 0, -1.63913e-07, 0, 1, 0, 1.63913e-07, 0, -1, -20.1306, 12.967, -75.3466)
-gem_color_str = "BLUE"
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "BLACK"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel29" parent="Collectibles" instance=ExtResource("7_qcyop")]
-transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -21.2832, 12.9671, -71.277)
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -35.2832, 12.9671, -73.277)
+gem_color_str = "YELLOW"
+gem_shape_str = "CHUNK"
+
+[node name="Jewel32" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -48.2832, 12.9671, -71.277)
 gem_color_str = "PINK"
-gem_shape_str = "ROUND"
+gem_shape_str = "DIAMOND"
+
+[node name="Jewel33" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -60.2832, 12.9671, -73.277)
+gem_color_str = "GREEN"
+gem_shape_str = "TRAPEZIUM"
+
+[node name="Jewel34" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -68.2832, 12.9671, -75.277)
+gem_color_str = "ORANGE"
+gem_shape_str = "DIAMOND"
+
+[node name="Jewel30" parent="Collectibles" instance=ExtResource("7_qcyop")]
+transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, -21.2832, 12.9671, -71.277)
+gem_color_str = "GREEN"
+gem_shape_str = "SQUARE"
 
 [node name="Jewel26" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 6.37144, 12.275, -63.7908)
-gem_color_str = "VIOLET"
-gem_shape_str = "SQUARE"
+gem_color_str = "RED"
+gem_shape_str = "DIAMOND"
 
 [node name="Jewel27" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.422618, 0, 0.906308, 0, 1, 0, -0.906308, 0, 0.422618, -2.75631, 12.275, -69.1353)
-gem_color_str = "PEARL"
-gem_shape_str = "SQUARE"
+gem_color_str = "GREEN"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel13" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.766044, 0, -0.642788, 0, 1, 0, 0.642788, 0, -0.766044, 11.9558, 11.05, -102.397)
-gem_shape_str = "DIAMOND"
+gem_color_str = "ORANGE"
+gem_shape_str = "TRAPEZIUM"
 
 [node name="Jewel14" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -17.0408, 11, -99.2978)
-gem_color_str = "SKY"
-gem_shape_str = "TRAPEZIUM"
+gem_color_str = "PINK"
+gem_shape_str = "CHUNK"
 
 [node name="Jewel17" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.642787, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642787, -16.662, 11, -95.7552)
-gem_shape_str = "BROOCH"
+gem_color_str = "PINK"
+gem_shape_str = "TRIANGLE"
 
 [node name="Jewel18" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, -21.7659, 11, -92.6183)
-gem_color_str = "YELLOW"
-gem_shape_str = "TRIANGLE"
+gem_color_str = "BLACK"
+gem_shape_str = "DIAMOND"
 
 [node name="Jewel19" parent="Collectibles" instance=ExtResource("7_qcyop")]
 transform = Transform3D(-0.573576, 0, -0.819152, 0, 1, 0, 0.819152, 0, -0.573576, -26.1457, 11, -92.4539)
-gem_color_str = "SKY"
 gem_shape_str = "TRAPEZIUM"
 
 [node name="Destructibles" type="Node3D" parent="."]
@@ -853,8 +1205,42 @@ transform = Transform3D(-0.642788, 0, 0.766045, 0, 1, 0, -0.766045, 0, -0.642788
 [node name="Crate15" parent="Destructibles" instance=ExtResource("8_xshtj")]
 transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, -21.4574, 11.575, -97.6243)
 
+[node name="Crate25" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, -1, -46.8574, 11.9685, -82.6243)
+
+[node name="Crate26" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, -1, -53.8574, 11.9685, -82.6243)
+
+[node name="Crate27" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, -1, -50.3574, 11.9685, -82.6243)
+
+[node name="Crate28" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, -1, -46.8574, 11.9685, -64.6243)
+
+[node name="Crate31" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, -0.642788, -68.2574, 11.9685, -80.4243)
+
+[node name="Crate32" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-0.819152, 0, 0.573576, 0, 1, 0, -0.573576, 0, -0.819152, -68.7574, 11.9685, -67.0243)
+
+[node name="Crate29" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, -1, -53.8574, 11.9685, -64.6243)
+
+[node name="Crate30" parent="Destructibles" instance=ExtResource("8_xshtj")]
+transform = Transform3D(-1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, -1, -50.3574, 11.9685, -64.6243)
+
 [node name="Crate8" parent="Destructibles" instance=ExtResource("8_xshtj")]
 transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 9.70752, 0.0500001, -85.6864)
 
 [node name="Crate9" parent="Destructibles" instance=ExtResource("8_xshtj")]
 transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 6.08056, 0.0500001, -87.2684)
+
+[node name="Interactibles" type="Node3D" parent="."]
+
+[node name="Button1" parent="Interactibles" node_paths=PackedStringArray("target") instance=ExtResource("9_82xuf")]
+target = NodePath("../../LevelGeometry/BalconyDoor")
+
+[node name="Button2" parent="Interactibles" node_paths=PackedStringArray("target") instance=ExtResource("9_82xuf")]
+transform = Transform3D(-8.74228e-08, -2.56055e-08, 2, 6.18172e-08, 2, 2.56055e-08, -2, 6.18172e-08, -8.74228e-08, -64.8063, 11.9896, -73.8343)
+target = NodePath("../../LevelGeometry/BalconyDoor2")
+is_vertical = true
