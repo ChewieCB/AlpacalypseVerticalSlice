@@ -9,7 +9,7 @@ var lerp_weight: float = 0.0
 var lerp_duration: float = 1.0
 var collect_distance: float = 1.0
 var rotation_speed: float = 2.0
-@onready var mesh = $Mesh
+var mesh: MeshInstance3D
 
 enum GEM_COLOURS {BLACK, BLUE, GREEN, ORANGE, PEARL, PINK, RED, SKY, VIOLET, YELLOW}
 enum GEM_SHAPES {DIAMOND, TRAPEZIUM, BROOCH, TRIANGLE, ROUND, CHUNK, SQUARE}
@@ -41,6 +41,7 @@ var gem_meshes = []
 
 
 func _ready():
+	mesh = $Mesh
 	gem_textures = _load_files("res://src/collectibles/jewel/meshes/materials/")
 	gem_meshes = _load_files("res://src/collectibles/jewel/meshes/")
 	gem_color_str = GEM_COLOURS.keys()[randi() % GEM_COLOURS.size()]
