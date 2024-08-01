@@ -39,15 +39,15 @@ var coins = 0
 @onready var spitball_scene = preload("res://src/projectiles/spitball/SpitBall.tscn")
 @onready var projectile_spawn = $Llama/rig/Skeleton3D/ProjectileSpawnAttachment/ProjectileSpawn
 @onready var spit_cooldown = $SpitCooldownTimer
-
 @onready var aiming_ui = $UI/AimingUI
 
-# Functions
+@onready var state_chart: StateChart = $StateChart
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	anim_tree.active = true
-	anim_tree.set("parameters/Transition/current_state", "idle")
+	
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -64,6 +64,7 @@ func _physics_process(delta):
 	handle_gravity(delta)
 	handle_effects()
 	
+	# Aiming
 	if Input.is_action_pressed("aim"):
 		aiming_ui.visible = true
 		# Crane neck and aim spitball towards camera aim postion
@@ -89,34 +90,16 @@ func _physics_process(delta):
 		skeleton.clear_bones_global_pose_override()
 		aiming_ui.visible = false
 	
+	# Ability oneshots
 	if anim_tree.get("parameters/kick/active"):
 		skeleton.clear_bones_global_pose_override()
 		aiming_ui.visible = false
-		
 	if Input.is_action_just_pressed("spit"):
 		if not anim_tree.get("parameters/spit/active"):
 			anim_tree.set("parameters/spit/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	
 	elif Input.is_action_just_pressed("kick"):
 		if not anim_tree.get("parameters/kick/active"):
 			anim_tree.set("parameters/kick/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-
-	# Movement
-
-	var applied_velocity: Vector3
-	
-	if movement_velocity:
-		applied_velocity = velocity.lerp(movement_velocity, delta * 10)
-	else:
-		applied_velocity.x = move_toward(applied_velocity.x, 0, movement_speed)
-		applied_velocity.y = move_toward(applied_velocity.y, 0, movement_speed)
-	applied_velocity.y = -gravity
-	
-	velocity = applied_velocity
-	move_and_slide()
-	var n = ($Llama/FrontRay.get_collision_normal() + $Llama/BackRay.get_collision_normal()) / 2.0
-	var xform = align_with_y(model.global_transform, n)
-	model.global_transform = model.global_transform.interpolate_with(xform, 12 * delta)
 	
 	# Falling/respawning
 	
@@ -139,21 +122,21 @@ func _physics_process(delta):
 # Handle animation(s)
 
 func handle_effects():
-	pass
-	
-	#particles_trail.emitting = false
-	#sound_footsteps.stream_paused = true
+	#pass
 	#
+	##particles_trail.emittinwwwwg = false
+	##sound_footsteps.stream_paused = true
+	##
 	if is_on_floor():
 		if abs(velocity.x) > 1 or abs(velocity.z) > 1:
-			anim_tree.set("parameters/Transition/transition_request", "walk")
+			state_chart.send_event("toWalking")
 			#particles_trail.emitting = true
 			#sound_footsteps.stream_paused = false
 		else:
-			anim_tree.set("parameters/Transition/transition_request", "idle")
-	else:
-		anim_tree.set("parameters/Transition/transition_request", "jump")
-		anim_jump_state.travel("JumpAir")
+			state_chart.send_event("toIdle")
+	#else:
+		#anim_tree.set("parameters/Transition/transition_request", "jump")
+		#anim_jump_state.travel("JumpAir")
 
 # Handle movement input
 
@@ -161,16 +144,16 @@ func handle_controls(delta):
 	
 	# Movement
 	
-	var input := Vector2.ZERO
-	input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	var direction = (transform.basis * Vector3(input.x, 0, input.y)).normalized()
-	
-	direction = direction.rotated(Vector3.UP, camera_pivot_h.rotation.y).normalized()
-	movement_velocity = direction * movement_speed * delta
-	
-	if input != Vector2.ZERO:
-		#direction = -camera_pivot_h.global_transform.basis.z
-		model.rotation.y = lerp_angle(model.rotation.y, atan2(direction.x, direction.z), delta * 12)
+	#var input := Vector2.ZERO
+	#input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	#var direction = (transform.basis * Vector3(input.x, 0, input.y)).normalized()
+	#
+	#direction = direction.rotated(Vector3.UP, camera_pivot_h.rotation.y).normalized()
+	#movement_velocity = direction * movement_speed * delta
+	#
+	#if input != Vector2.ZERO:
+		##direction = -camera_pivot_h.global_transform.basis.z
+		#model.rotation.y = lerp_angle(model.rotation.y, atan2(direction.x, direction.z), delta * 12)
 	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
@@ -262,3 +245,46 @@ func collect_coin():
 
 func _on_collectible_pickup_range_body_entered(body: Node3D) -> void:
 	body.collect(self)
+
+
+func _on_idle_state_entered() -> void:
+	anim_tree.set("parameters/Transition/current_state", "idle")
+
+
+func _on_idle_state_physics_processing(delta: float) -> void:
+	var applied_velocity: Vector3
+	applied_velocity.x = move_toward(applied_velocity.x, 0, movement_speed)
+	applied_velocity.y = move_toward(applied_velocity.y, 0, movement_speed)
+	applied_velocity.y = -gravity
+	
+	velocity = applied_velocity
+	move_and_slide()
+	
+	# Align with floor angle
+	var n = ($Llama/FrontRay.get_collision_normal() + $Llama/BackRay.get_collision_normal()) / 2.0
+	var xform = align_with_y(model.global_transform, n)
+	model.global_transform = model.global_transform.interpolate_with(xform, 12 * delta)
+
+
+func _on_walking_state_entered() -> void:
+	anim_tree.set("parameters/Transition/transition_request", "walk")
+
+
+func _on_walking_state_physics_processing(delta: float) -> void:
+	var input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
+	var direction = (transform.basis * Vector3(input.x, 0, input.y)).normalized()
+	
+	direction = direction.rotated(Vector3.UP, camera_pivot_h.rotation.y).normalized()
+	movement_velocity = direction * movement_speed * delta
+	
+	velocity.lerp(movement_velocity, delta * 10)
+		
+	velocity = movement_velocity
+	move_and_slide()
+	
+	var n = ($Llama/FrontRay.get_collision_normal() + $Llama/BackRay.get_collision_normal()) / 2.0
+	var xform = align_with_y(model.global_transform, n)
+	model.global_transform = model.global_transform.interpolate_with(xform, 12 * delta)
+	
+	if input != Vector2.ZERO:
+		model.rotation.y = lerp_angle(model.rotation.y, atan2(direction.x, direction.z), delta * 12)

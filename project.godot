@@ -21,7 +21,7 @@ Draw3d="*res://src/utils/draw_3d.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
 
 [input]
 
